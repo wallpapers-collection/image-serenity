@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="Image Serenity - Seiri" property="og:title" />
+    <meta name="description" content="Image Serenity - Seiri" />
+    <meta
+      property="og:description"
+      content="Image Serenity - Seiri"
+    />
+    <meta
+      name="twitter:description"
+      content="Image Serenity - Seiri"
+    />
+    <meta name="keywords" content="picture,image,bilibili" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
+    />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta
+      content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+      name="robots"
+    />
+    <meta content="#333" name="theme-color" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="@Seiriryu" name="twitter:site" />
+    <meta content="@Seiriryu" name="twitter:creator" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-F72LVLBFN4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-F72LVLBFN4");
+    </script>
+    <title>Image Serenity</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Image Serenity</h1>
+      <label class="switch">
+        <input id="toggleMode" type="checkbox" />
+        <span class="slider round"></span>
+        <span class="mode-label" id="darkMode">Dark Mode</span>
+      </label>
+    </div>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/" id="homeLink">Home</a></li>
+          <li>
+            <a href="https://twitter.com/Seiriryu" id="aboutLink">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search Image..." />
+      <button id="searchButton">Search</button>
+    </div>
+
+    <div class="image-gallery"></div>
+
+    <div class="pagination-container">
+      <button id="prevPage">Previous Page</button>
+      <span><span id="currentPage">1</span></span>
+      <button id="nextPage">Next Page</button>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 Image Serenity All Rights Reserved</p>
+        <p>
+          <a href="#">Privacy Policy</a> |
+          <a href="https://twitter.com/Seiriryu" id="aboutLink">About Us</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
