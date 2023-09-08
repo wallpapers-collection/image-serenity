@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // 图片数据数组，包含图片路径、标题和类别
   const imageData = await loadPicture();
-  const itemsPerPage = 14;
+  const itemsPerPage = 12;
   let currentPage = 1;
   let currentImages = imageData ? imageData.slice() : imageData;
 
