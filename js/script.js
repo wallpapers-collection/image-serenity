@@ -15,26 +15,26 @@ document.addEventListener("DOMContentLoaded", async function () {
     toggleNightMode();
   });
 
-  // 根据类别显示图片
-  function displayImagesByCategory(category) {
-    if (category === "all") {
-      currentImages = imageData.slice();
-    } else {
-      currentImages = imageData.filter((item) => item.category === category);
-    }
-    currentPage = 1;
-    displayImages();
-  }
+  // // 根据类别显示图片
+  // function displayImagesByCategory(category) {
+  //   if (category === "all") {
+  //     currentImages = imageData.slice();
+  //   } else {
+  //     currentImages = imageData.filter((item) => item.category === category);
+  //   }
+  //   currentPage = 1;
+  //   displayImages();
+  // }
 
-  // 处理导航链接点击事件
-  const navLinks = document.querySelectorAll("nav a");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-      const selectedCategory = this.getAttribute("data-category");
-      displayImagesByCategory(selectedCategory);
-    });
-  });
+  // // 处理导航链接点击事件
+  // const navLinks = document.querySelectorAll("nav a");
+  // navLinks.forEach((link) => {
+  //   link.addEventListener("click", function (event) {
+  //     event.preventDefault();
+  //     const selectedCategory = this.getAttribute("data-category");
+  //     displayImagesByCategory(selectedCategory);
+  //   });
+  // });
 
   // 根据当前页数显示图片
   function displayImages() {
@@ -49,12 +49,17 @@ document.addEventListener("DOMContentLoaded", async function () {
       const imageItem = document.createElement("div");
       imageItem.classList.add("image-item");
 
+      const alink = document.createElement("a");
+      alink.href = image.src;
+      alink.target = "_blank";
+      alink.rel = "noopener noreferrer";
       const img = document.createElement("img");
       img.src = image.src;
       img.alt = image.title;
-      img.referrerpolicy = "no-referrer";
+      img.referrerPolicy = "no-referrer";
+      alink.appendChild(img);
 
-      imageItem.appendChild(img);
+      imageItem.appendChild(alink);
       gallery.appendChild(imageItem);
     });
 

@@ -51,6 +51,12 @@ header {
   margin-right: 10px;
 }
 
+a {
+  /* 下划线 */
+  text-decoration: none; /* 去掉下划线 */
+  color: #333; /* 设置黑色文本颜色 */
+}
+
 .slider:before {
   position: absolute;
   content: "";
