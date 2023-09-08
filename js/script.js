@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.src = image.src;
       img.alt = image.title;
       img.referrerPolicy = "no-referrer";
+      img.loading = "lazy";
       alink.appendChild(img);
 
       imageItem.appendChild(alink);
