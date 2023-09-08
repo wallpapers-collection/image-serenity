@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const img = document.createElement("img");
       img.src = image.src;
       img.alt = image.title;
+      img.referrerpolicy = "no-referrer";
 
       imageItem.appendChild(img);
       gallery.appendChild(imageItem);
