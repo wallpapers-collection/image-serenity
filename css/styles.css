@@ -174,9 +174,9 @@ button#searchButton {
   color: #ccc;
 }
 
-.night-mode .image-item img {
+/* .night-mode .image-item img {
   filter: grayscale(100%) brightness(0.8);
-}
+} */
 
 .night-mode .pagination-container button {
   color: #fff;
