@@ -132,7 +132,7 @@ async function loadPicture() {
 async function loadLanguage() {
   // 获取用户的语言首选项
   let userLanguage = navigator.language || navigator.userLanguage;
-  if (userLanguage != "en" || userLanguage != "zh-CN" || userLanguage != "ja") {
+  if (userLanguage != "en" && userLanguage != "zh-CN" && userLanguage != "ja") {
     userLanguage = "en";
   }
   // 加载对应的 JSON 文件
