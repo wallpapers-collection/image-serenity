@@ -84,12 +84,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   currentPageElement.addEventListener("input", function (event) {
     try {
       currentPage = parseInt(event.target.textContent);
-    } catch(e) {
+    } catch (e) {
       currentPage = 1;
     }
-    if (currentPage < 1) { 
+    if (isNaN(currentPage)) {
       currentPage = 1;
-    } else if (currentPage > totalPages) { 
+    } else if (currentPage < 1) {
+      currentPage = 1;
+    } else if (currentPage > totalPages) {
       currentPage = totalPages;
     }
     displayImages();
