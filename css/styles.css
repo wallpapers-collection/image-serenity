@@ -124,7 +124,7 @@ button#searchButton {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 20px;
-  margin: 20px;
+  margin: 15px;
 }
 
 .image-item {
@@ -137,6 +137,7 @@ button#searchButton {
 .image-item img {
   margin: auto;
   height: 400px;
+  width: 260px;
   object-fit: cover;
   display: block;
   transition: transform 0.2s;
