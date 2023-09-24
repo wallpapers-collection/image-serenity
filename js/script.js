@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // 图片数据数组，包含图片路径、标题和类别
   const imageData = await loadPicture();
-  const itemsPerPage = 24;
+  const itemsPerPage = 12;
   let currentPage = 1;
   let currentImages = imageData ? imageData.slice() : imageData;
   const totalPages = Math.ceil(currentImages.length / itemsPerPage);
@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const currentPageElement = document.getElementById("currentPage");
     currentPageElement.textContent = `${currentPage}`;
-
     const totalpageElement = document.getElementById("totalpage");
     totalpageElement.textContent = `${totalPages}`;
   }
@@ -51,8 +50,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 点击第一页按钮
   const firstPageButton = document.getElementById("firstPage");
   firstPageButton.addEventListener("click", function () {
-      currentPage = 1;
-      displayImages();
+    currentPage = 1;
+    displayImages();
   });
 
   // 点击上一页按钮
@@ -73,12 +72,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-    // 点击最后一页按钮
-    const lastPageButton = document.getElementById("lastPage");
-    lastPageButton.addEventListener("click", function () {
-        currentPage = totalPages;
-        displayImages();
-    });
+  // 点击最后一页按钮
+  const lastPageButton = document.getElementById("lastPage");
+  lastPageButton.addEventListener("click", function () {
+    currentPage = totalPages;
+    displayImages();
+  });
+
+  //直接修改页数
+  const currentPageElement = document.getElementById("currentPage");
+  currentPageElement.addEventListener("change", function (value) {
+    currentPage = parseInt(value);
+    displayImages();
+  });
 
   // 搜索功能
   const searchButton = document.getElementById("searchButton");
