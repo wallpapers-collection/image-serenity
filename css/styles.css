@@ -135,7 +135,7 @@ button#searchButton {
 }
 
 .image-item img {
-  width: 100%;
+  margin: auto;
   height: 400px;
   object-fit: cover;
   display: block;
