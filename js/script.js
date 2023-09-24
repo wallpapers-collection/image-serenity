@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const itemsPerPage = 22;
   let currentPage = 1;
   let currentImages = imageData ? imageData.slice() : imageData;
+  const totalPages = Math.ceil(currentImages.length / itemsPerPage);
 
   // 切换夜间模式的函数
   function toggleNightMode() {
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     const currentPageElement = document.getElementById("currentPage");
-    currentPageElement.textContent = currentPage;
+    currentPageElement.textContent = `${currentPage}/${totalPages}`;
   }
 
   // 点击上一页按钮
@@ -80,7 +81,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 点击下一页按钮
   const nextPageButton = document.getElementById("nextPage");
   nextPageButton.addEventListener("click", function () {
-    const totalPages = Math.ceil(currentImages.length / itemsPerPage);
     if (currentPage < totalPages) {
       currentPage++;
       displayImages();
