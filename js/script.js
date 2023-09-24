@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const currentPageElement = document.getElementById("currentPage");
   currentPageElement.addEventListener("input", function (event) {
     try {
-      currentPage = parseInt(event.target.value);
+      currentPage = parseInt(event.target.textContent);
     } catch(e) {
       currentPage = 1;
     }
