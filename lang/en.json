@@ -3,7 +3,9 @@
   "about": "About",
   "dark_mode_label": "Dark Mode",
   "search": "Search",
+  "first_page": "First Page",
   "prev_page": "Previous Page",
   "next_page": "Next Page",
+  "last_page": "Last Page",
   "no_results": "No results found"
 }

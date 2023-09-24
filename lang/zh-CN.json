@@ -3,7 +3,9 @@
   "about": "关于",
   "dark_mode_label": "夜间模式",
   "search": "检索",
+  "first_page": "第一页",
   "prev_page": "前一页",
   "next_page": "下一页",
+  "last_page": "最后一页",
   "no_results": "没有检索到结果"
 }

@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta content="Image Serenity - Seiri" property="og:title" />
     <meta name="description" content="Image Serenity - Seiri" />
-    <meta
-      property="og:description"
-      content="Image Serenity - Seiri"
-    />
-    <meta
-      name="twitter:description"
-      content="Image Serenity - Seiri"
-    />
+    <meta property="og:description" content="Image Serenity - Seiri" />
+    <meta name="twitter:description" content="Image Serenity - Seiri" />
     <meta name="keywords" content="picture,image,bilibili" />
     <meta
       name="viewport"
@@ -74,9 +68,15 @@
     <div class="image-gallery"></div>
 
     <div class="pagination-container">
+      <button id="firstPage">First Page</button>
       <button id="prevPage">Previous Page</button>
-      <span><span id="currentPage">1</span></span>
+      <span>
+        <div id="currentPage" contenteditable="true">1</div>
+        /
+        <div id="totalpage">1</div>
+      </span>
       <button id="nextPage">Next Page</button>
+      <button id="lastPage">Last Page</button>
     </div>
 
     <footer>

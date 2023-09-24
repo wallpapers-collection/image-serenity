@@ -42,8 +42,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     const currentPageElement = document.getElementById("currentPage");
-    currentPageElement.textContent = `${currentPage}/${totalPages}`;
+    currentPageElement.textContent = `${currentPage}`;
+
+    const totalpageElement = document.getElementById("totalpage");
+    totalpageElement.textContent = `${totalPages}`;
   }
+
+  // 点击第一页按钮
+  const firstPageButton = document.getElementById("firstPage");
+  firstPageButton.addEventListener("click", function () {
+      currentPage = 1;
+      displayImages();
+  });
 
   // 点击上一页按钮
   const prevPageButton = document.getElementById("prevPage");
@@ -62,6 +72,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       displayImages();
     }
   });
+
+    // 点击最后一页按钮
+    const lastPageButton = document.getElementById("lastPage");
+    lastPageButton.addEventListener("click", function () {
+        currentPage = totalPages;
+        displayImages();
+    });
 
   // 搜索功能
   const searchButton = document.getElementById("searchButton");
@@ -124,8 +141,10 @@ async function loadLanguage() {
     document.getElementById("aboutLink").textContent = data.about;
     document.getElementById("darkMode").textContent = data.dark_mode_label;
     document.getElementById("searchButton").textContent = data.search;
+    document.getElementById("firstPage").textContent = data.first_page;
     document.getElementById("prevPage").textContent = data.prev_page;
     document.getElementById("nextPage").textContent = data.next_page;
+    document.getElementById("lastsPage").textContent = data.last_page;
   } catch (e) {
     console.log(e);
   }

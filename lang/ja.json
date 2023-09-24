@@ -3,7 +3,9 @@
   "about": "について",
   "dark_mode_label": "夜間モード",
   "search": "検索",
+  "first_page": "最初のページ",
   "prev_page": "前ページ",
   "next_page": "次ページ",
+  "last_page": "最後のページ",
   "no_results": "該当する情報が見つかりませんでした。"
 }
