@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.alt = image.description || image.title;
       img.referrerPolicy = "no-referrer";
       img.loading = "lazy";
-      img.decoding="async";
+      img.decoding="sync";
       alink.appendChild(img);
 
       imageItem.appendChild(alink);
