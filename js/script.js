@@ -81,8 +81,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   //直接修改页数
   const currentPageElement = document.getElementById("currentPage");
-  currentPageElement.addEventListener("change", function (value) {
-    currentPage = parseInt(value);
+  currentPageElement.addEventListener("input", function (event) {
+    try {
+      currentPage = parseInt(event.target.value);
+    } catch(e) {
+      currentPage = 1;
+    }
+    if (currentPage < 1) { 
+      currentPage = 1;
+    } else if (currentPage > totalPages) { 
+      currentPage = totalPages;
+    }
     displayImages();
   });
 
