@@ -147,4 +147,4 @@ def merge_data(current_data, before_data):
 
 if __name__ == '__main__':
     start_time = time.time()
-    start(['13127564', '3493137785817215'])
+    start(['278027', '221764123', '3493137785817215'])
