@@ -6,11 +6,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   let currentImages = imageData ? imageData.slice() : imageData;
   const totalPages = Math.ceil(currentImages.length / itemsPerPage);
 
-  // 切换夜间模式的函数
-  function toggleNightMode() {
-    document.body.classList.toggle("night-mode");
-  }
-
   const toggleModeCheckbox = document.getElementById("toggleMode");
   toggleModeCheckbox.addEventListener("change", function () {
     toggleNightMode();
@@ -87,6 +82,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 初始化显示图片
   displayImages();
 });
+
+  // 切换夜间模式的函数
+  function toggleNightMode() {
+    document.body.classList.toggle("night-mode");
+  }
 
 /**
  * 加载所有图片
