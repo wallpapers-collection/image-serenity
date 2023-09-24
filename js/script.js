@@ -16,27 +16,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     toggleNightMode();
   });
 
-  // // 根据类别显示图片
-  // function displayImagesByCategory(category) {
-  //   if (category === "all") {
-  //     currentImages = imageData.slice();
-  //   } else {
-  //     currentImages = imageData.filter((item) => item.category === category);
-  //   }
-  //   currentPage = 1;
-  //   displayImages();
-  // }
-
-  // // 处理导航链接点击事件
-  // const navLinks = document.querySelectorAll("nav a");
-  // navLinks.forEach((link) => {
-  //   link.addEventListener("click", function (event) {
-  //     event.preventDefault();
-  //     const selectedCategory = this.getAttribute("data-category");
-  //     displayImagesByCategory(selectedCategory);
-  //   });
-  // });
-
   // 根据当前页数显示图片
   function displayImages() {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -59,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.alt = image.description || image.title;
       img.referrerPolicy = "no-referrer";
       img.loading = "lazy";
-      img.decoding="sync";
+      img.decoding="async";
       alink.appendChild(img);
 
       imageItem.appendChild(alink);
@@ -91,7 +70,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 搜索功能
   const searchButton = document.getElementById("searchButton");
   const searchInput = document.getElementById("searchInput");
-
   searchButton.addEventListener("click", function () {
     const searchTerm = searchInput.value.toLowerCase();
     if (searchTerm.trim() === "") {
