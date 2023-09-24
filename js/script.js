@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const itemsPerPage = 14;
   let currentPage = 1;
   let currentImages = imageData ? imageData.slice() : imageData;
-  const totalPages = Math.ceil(currentImages.length / itemsPerPage);
+  let totalPages = Math.ceil(currentImages.length / itemsPerPage);
 
   const toggleModeCheckbox = document.getElementById("toggleMode");
   toggleModeCheckbox.addEventListener("change", function () {
@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         item.title.toLowerCase().includes(searchTerm) || item.description.toLowerCase().includes(searchTerm) || item.author_id.toLowerCase().includes(searchTerm)
       );
     }
+    totalPages = Math.ceil(currentImages.length / itemsPerPage);
     currentPage = 1;
     displayImages();
   });
