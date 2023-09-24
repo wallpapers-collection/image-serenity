@@ -220,7 +220,6 @@ header nav a:hover {
   margin: 20px auto;
   display: flex;
   justify-content: center;
-  height: 40px;
 }
 
 .pagination-container button {
