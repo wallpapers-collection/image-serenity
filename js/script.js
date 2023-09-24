@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       currentImages = imageData.slice();
     } else {
       currentImages = imageData.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm)
+        item.title.toLowerCase().includes(searchTerm) || item.description.toLowerCase().includes(searchTerm) || item.author_id.toLowerCase().includes(searchTerm)
       );
     }
     currentPage = 1;
