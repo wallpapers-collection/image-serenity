@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.alt = image.description || image.title;
       img.referrerPolicy = "no-referrer";
       img.loading = "lazy";
-      img.decoding="async";
+      img.decoding = "async";
       alink.appendChild(img);
 
       imageItem.appendChild(alink);
@@ -83,10 +83,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   displayImages();
 });
 
-  // 切换夜间模式的函数
-  function toggleNightMode() {
-    document.body.classList.toggle("night-mode");
-  }
+// 切换夜间模式的函数
+function toggleNightMode() {
+  document.body.classList.toggle("night-mode");
+}
 
 /**
  * 加载所有图片
