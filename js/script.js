@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const img = document.createElement("img");
       img.src = image.src;
       img.alt = image.description || image.title;
+      img.title = image.description || image.title;
       img.referrerPolicy = "no-referrer";
       img.loading = "lazy";
       img.decoding = "async";
