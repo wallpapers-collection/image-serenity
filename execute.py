@@ -82,6 +82,11 @@ def get_dynamic_images(datas, mid, next_offset=0):
                     datas.append({
                         'title': filename,
                         'src': image_url,
+                        'tags': picture.get('img_tags'),
+                        'height': picture.get('img_height'),
+                        'width': picture.get('img_width'),
+                        'size': picture.get('img_size'),
+                        'description':  item.get('description'),
                         'author_id': mid
                     })
              # 检查是否超过了最大运行时间
