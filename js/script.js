@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.referrerPolicy = "no-referrer";
       img.loading = "lazy";
       img.decoding = "async";
+      img.height = 400;
       alink.appendChild(img);
 
       imageItem.appendChild(alink);
