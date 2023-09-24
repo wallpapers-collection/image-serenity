@@ -144,7 +144,7 @@ async function loadLanguage() {
     document.getElementById("firstPage").textContent = data.first_page;
     document.getElementById("prevPage").textContent = data.prev_page;
     document.getElementById("nextPage").textContent = data.next_page;
-    document.getElementById("lastsPage").textContent = data.last_page;
+    document.getElementById("lastPage").textContent = data.last_page;
   } catch (e) {
     console.log(e);
   }

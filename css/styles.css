@@ -218,4 +218,17 @@ header nav a:hover {
 .pagination-container {
   text-align: center;
   margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+.pagination-container button {
+  margin: 0 1px;
+}
+
+.pagination-container span {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
 }
