@@ -153,6 +153,8 @@ async function loadLanguage() {
   }
   // 加载对应的 JSON 文件
   try {
+    let html = document.getElementsByTagName('html');
+    html.lang = userLanguage;
     const response = await fetch(`lang/${userLanguage}.json`);
     const data = await response.json();
     // 将文本内容应用到页面上
