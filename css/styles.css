@@ -1,6 +1,6 @@
 /* 基本样式 */
 body {
-  font-family: "SimSun", Arial, sans-serif; /* 设置宋体为主字体，然后是 Arial 和 sans-serif 作为备用字体 */
+  font-family: Arial, sans-serif; /* 设置宋体为主字体，然后是 Arial 和 sans-serif 作为备用字体 */
   background-color: #f0f0f0; /* 设置浅灰色背景色 */
   color: #333; /* 设置黑色文本颜色 */
   transition: background-color 0.5s, color 0.5s;
