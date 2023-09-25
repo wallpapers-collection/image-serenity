@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.src = image.src;
       img.alt = image.description || image.title;
       img.title = image.description || image.title;
-      // img.referrerPolicy = "no-referrer-when-downgrade";
       img.loading = "lazy";
       img.decoding = "async";
       img.height = 400;
