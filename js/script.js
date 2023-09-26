@@ -30,35 +30,31 @@ document.addEventListener("DOMContentLoaded", async function () {
     gallery.innerHTML = "";
 
     let loadedImagesCount = 0;
-    pageImages.forEach((image) => {
-      loadImage(image.src, function () {
-        const imageItem = document.createElement("div");
-        imageItem.classList.add("image-item");
+    pageImages.forEach(async (el) => {
+      const img = await loadImage(el.src);
+      img.alt = el.description || el.title;
+      img.title = el.description || el.title;
+      img.loading = "lazy";
+      img.height = 400;
 
-        const alink = document.createElement("a");
-        alink.href = image.src;
-        alink.target = "_blank";
-        alink.rel = "noopener noreferrer";
-        const img = document.createElement("img");
-        img.src = image.src;
-        img.alt = image.description || image.title;
-        img.title = image.description || image.title;
-        img.loading = "lazy";
-        img.decoding = "async";
-        img.height = 400;
-        alink.appendChild(img);
+      const alink = document.createElement("a");
+      alink.href = el.src;
+      alink.target = "_blank";
+      alink.rel = "noopener noreferrer";
+      alink.appendChild(img);
 
-        imageItem.appendChild(alink);
-        gallery.appendChild(imageItem);
+      const imageItem = document.createElement("div");
+      imageItem.classList.add("image-item");
+      imageItem.appendChild(alink);
+      gallery.appendChild(imageItem);
 
-        // 当所有图片都加载完成时隐藏 loading
-        loadedImagesCount++;
-        if (loadedImagesCount === pageImages.length) {
-          // 隐藏蒙版
-          overlayElement.style.display = "none";
-          loadingElement.style.display = "none";
-        }
-      });
+      // 当所有图片都加载完成时隐藏 loading
+      loadedImagesCount++;
+      if (loadedImagesCount === pageImages.length) {
+        // 隐藏蒙版
+        overlayElement.style.display = "none";
+        loadingElement.style.display = "none";
+      }
     });
 
     const currentPageElement = document.getElementById("currentPage");
@@ -151,12 +147,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // 创建一个用于加载图片的函数
-function loadImage(src, callback) {
-  const img = new Image();
-  img.onload = function () {
-    callback(img);
-  };
-  img.src = src;
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (e) => reject(e);
+    img.src = src;
+  });
 }
 
 // 切换夜间模式的函数
