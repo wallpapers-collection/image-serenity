@@ -6,7 +6,7 @@ Website URL: https://bilibili-tool.github.io/bilibili-picture
 
 The website currently offers the following features:
 
-- Automatically fetches images from Bilibili UP主's featured gallery at scheduled times and saves the retrieved image information to the **./raw/datas.json** file.
+- Automatically fetches images from Bilibili UP's featured gallery at scheduled times and saves the retrieved image information to the **./raw/datas.json** file.
 
 - Dynamically displays the image information saved in the **./raw/datas.json** file on the **index.html** page.
 
