@@ -246,14 +246,16 @@ header nav a:hover {
   border-radius: 10px;
   font-size: 1.5rem;
   z-index: 1000;
-  animation: fadeInOut 1.5s ease infinite;
 }
 
-@keyframes fadeInOut {
-  0%, 100% {
-      opacity: 0;
-  }
-  50% {
-      opacity: 1;
-  }
+/* 添加蒙版样式 */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  z-index: 999; /* 低于 loading 的 z-index，但高于其他内容 */
 }

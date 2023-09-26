@@ -11,22 +11,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     toggleNightMode();
   });
 
+  // 获取 overlay 元素
+  const overlayElement = document.getElementById("overlay");
   // 获取 loading 元素
   const loadingElement = document.getElementById("loading");
-
+  // 显示蒙版
+  overlayElement.style.display = "block";
   // 在图片加载之前显示 loading
   loadingElement.style.display = "block";
-
-  // 创建一个用于加载图片的函数
-  function loadImage(src, callback) {
-    const img = new Image();
-    img.onload = function () {
-      // 图片加载完成后隐藏 loading
-      loadingElement.style.display = "none";
-      callback(img);
-    };
-    img.src = src;
-  }
 
   // 根据当前页数显示图片
   function displayImages() {
@@ -62,6 +54,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         // 当所有图片都加载完成时隐藏 loading
         loadedImagesCount++;
         if (loadedImagesCount === pageImages.length) {
+          // 隐藏蒙版
+          overlayElement.style.display = "none";
           loadingElement.style.display = "none";
         }
       });
@@ -155,6 +149,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 初始化显示图片
   displayImages();
 });
+
+// 创建一个用于加载图片的函数
+function loadImage(src, callback) {
+  const img = new Image();
+  img.onload = function () {
+    callback(img);
+  };
+  img.src = src;
+}
 
 // 切换夜间模式的函数
 function toggleNightMode() {
