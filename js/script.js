@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // 图片数据数组，包含图片路径、标题和类别
   const imageData = await loadPicture();
+  //每页显示的件数
   const itemsPerPage = 14;
+  //当前页
   let currentPage = 1;
+  //当前页图片
   let currentImages = imageData ? imageData.slice() : imageData;
+  // 总页
   let totalPages = Math.ceil(currentImages.length / itemsPerPage);
-
+  //夜间模式的按钮
   const toggleModeCheckbox = document.getElementById("toggleMode");
   toggleModeCheckbox.addEventListener("change", function () {
     toggleNightMode();
@@ -41,8 +45,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         alink.rel = "noopener noreferrer";
         img.alt = el.description || el.title;
         img.title = el.description || el.title;
-        img.loading = "lazy";
-        img.decoding = "async";
         img.height = 400;
         alink.appendChild(img);
 
