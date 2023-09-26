@@ -10,25 +10,25 @@ The website currently offers the following features:
 
 - Dynamically displays the image information saved in the **./raw/datas.json** file on the **index.html** page.
 
-  ![](pic/demo1. png)
+  ![](pic/demo1.png)
 
 - Supports both night mode and day mode, allowing users to freely switch between them.
 
-  ![](pic/demo2. png)
+  ![](pic/demo2.png)
 
 - Allows users to click on images to view them in a larger size.
 
 - Provides image search functionality (press Enter to search).
 
-  ![](pic/search. png)
+  ![](pic/search.png)
 
 - Offers pagination functionality for browsing more images
 
-  ![](pic/pagination. png)
+  ![](pic/pagination.png)
 
 - Supports automatic language switching between Chinese, English, and Japanese based on the user's browser settings.
 
-  ![](pic/lang. png)
+  ![](pic/lang.png)
 
 - About and Feedback
 
