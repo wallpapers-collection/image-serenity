@@ -1,4 +1,4 @@
-# 哔哩哔哩精选图库（二次元和漫画节选）
+# Pictorial Gallery of BiliBili (anime and comic excerpts)
 
 English | [简体中文](./README_zh.md) | [日本語](./README_jp.md)
 
