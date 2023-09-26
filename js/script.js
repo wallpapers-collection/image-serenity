@@ -30,31 +30,33 @@ document.addEventListener("DOMContentLoaded", async function () {
     gallery.innerHTML = "";
 
     let loadedImagesCount = 0;
-    pageImages.forEach(async (el) => {
-      const img = await loadImage(el.src);
-      img.alt = el.description || el.title;
-      img.title = el.description || el.title;
-      img.loading = "lazy";
-      img.height = 400;
+    pageImages.forEach((el) => {
+      loadImage(el.src, function (img) {
+        const imageItem = document.createElement("div");
+        imageItem.classList.add("image-item");
 
-      const alink = document.createElement("a");
-      alink.href = el.src;
-      alink.target = "_blank";
-      alink.rel = "noopener noreferrer";
-      alink.appendChild(img);
+        const alink = document.createElement("a");
+        alink.href = el.src;
+        alink.target = "_blank";
+        alink.rel = "noopener noreferrer";
+        img.alt = el.description || el.title;
+        img.title = el.description || el.title;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.height = 400;
+        alink.appendChild(img);
 
-      const imageItem = document.createElement("div");
-      imageItem.classList.add("image-item");
-      imageItem.appendChild(alink);
-      gallery.appendChild(imageItem);
+        imageItem.appendChild(alink);
+        gallery.appendChild(imageItem);
 
-      // 当所有图片都加载完成时隐藏 loading
-      loadedImagesCount++;
-      if (loadedImagesCount === pageImages.length) {
-        // 隐藏蒙版
-        overlayElement.style.display = "none";
-        loadingElement.style.display = "none";
-      }
+        // 当所有图片都加载完成时隐藏 loading
+        loadedImagesCount++;
+        if (loadedImagesCount === pageImages.length) {
+          // 隐藏蒙版
+          overlayElement.style.display = "none";
+          loadingElement.style.display = "none";
+        }
+      });
     });
 
     const currentPageElement = document.getElementById("currentPage");
@@ -122,8 +124,10 @@ document.addEventListener("DOMContentLoaded", async function () {
       performSearch();
     }
   });
-  searchButton.addEventListener("click", performSearch());
 
+  searchButton.addEventListener("click", performSearch);
+
+  // 检索函数
   function performSearch() {
     const searchTerm = searchInput.value.toLowerCase();
     if (searchTerm.trim() === "") {
@@ -147,13 +151,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // 创建一个用于加载图片的函数
-function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = (e) => reject(e);
-    img.src = src;
-  });
+function loadImage(src, callback) {
+  const img = new Image();
+  img.onload = function () {
+    callback(img);
+  };
+  img.src = src;
 }
 
 // 切换夜间模式的函数
