@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     const currentPageElement = document.getElementById("currentPage");
-    currentPageElement.textContent = `${currentPage}`;
+    currentPageElement.textContent = currentPage;
     const totalpageElement = document.getElementById("totalpage");
-    totalpageElement.textContent = `${totalPages}`;
+    totalpageElement.textContent = totalPages;
   }
 
   // 点击第一页按钮
@@ -100,19 +100,30 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 搜索功能
   const searchButton = document.getElementById("searchButton");
   const searchInput = document.getElementById("searchInput");
-  searchButton.addEventListener("click", function () {
+
+  searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+  searchButton.addEventListener("click", performSearch());
+
+  function performSearch() {
     const searchTerm = searchInput.value.toLowerCase();
     if (searchTerm.trim() === "") {
       currentImages = imageData.slice();
     } else {
-      currentImages = imageData.filter((item) =>
-        item.title.toLowerCase().includes(searchTerm) || item.description.toLowerCase().includes(searchTerm) || item.author_id.toLowerCase().includes(searchTerm)
+      currentImages = imageData.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchTerm) ||
+          item.description.toLowerCase().includes(searchTerm) ||
+          item.author_id.toLowerCase().includes(searchTerm)
       );
     }
     totalPages = Math.ceil(currentImages.length / itemsPerPage);
     currentPage = 1;
     displayImages();
-  });
+  }
 
   await loadLanguage();
   // 初始化显示图片
@@ -150,9 +161,10 @@ async function loadLanguage() {
   if (userLanguage != "en" && userLanguage != "zh-CN" && userLanguage != "ja") {
     userLanguage = "en";
   }
+
   // 加载对应的 JSON 文件
   try {
-    let html = document.getElementsByTagName('html');
+    let html = document.getElementsByTagName("html");
     html[0].lang = userLanguage;
     const response = await fetch(`lang/${userLanguage}.json`);
     const data = await response.json();
