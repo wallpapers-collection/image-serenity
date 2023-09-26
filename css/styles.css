@@ -232,3 +232,28 @@ header nav a:hover {
   align-items: center;
   margin: 0 10px;
 }
+
+/* 添加 loading 样式 */
+.loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  z-index: 1000;
+  animation: fadeInOut 1.5s ease infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+}
