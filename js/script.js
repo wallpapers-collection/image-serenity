@@ -11,6 +11,23 @@ document.addEventListener("DOMContentLoaded", async function () {
     toggleNightMode();
   });
 
+  // 获取 loading 元素
+  const loadingElement = document.getElementById("loading");
+
+  // 在图片加载之前显示 loading
+  loadingElement.style.display = "block";
+
+  // 创建一个用于加载图片的函数
+  function loadImage(src, callback) {
+    const img = new Image();
+    img.onload = function () {
+      // 图片加载完成后隐藏 loading
+      loadingElement.style.display = "none";
+      callback(img);
+    };
+    img.src = src;
+  }
+
   // 根据当前页数显示图片
   function displayImages() {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -20,25 +37,34 @@ document.addEventListener("DOMContentLoaded", async function () {
     const gallery = document.querySelector(".image-gallery");
     gallery.innerHTML = "";
 
+    let loadedImagesCount = 0;
     pageImages.forEach((image) => {
-      const imageItem = document.createElement("div");
-      imageItem.classList.add("image-item");
+      loadImage(image.src, function () {
+        const imageItem = document.createElement("div");
+        imageItem.classList.add("image-item");
 
-      const alink = document.createElement("a");
-      alink.href = image.src;
-      alink.target = "_blank";
-      alink.rel = "noopener noreferrer";
-      const img = document.createElement("img");
-      img.src = image.src;
-      img.alt = image.description || image.title;
-      img.title = image.description || image.title;
-      img.loading = "lazy";
-      img.decoding = "async";
-      img.height = 400;
-      alink.appendChild(img);
+        const alink = document.createElement("a");
+        alink.href = image.src;
+        alink.target = "_blank";
+        alink.rel = "noopener noreferrer";
+        const img = document.createElement("img");
+        img.src = image.src;
+        img.alt = image.description || image.title;
+        img.title = image.description || image.title;
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.height = 400;
+        alink.appendChild(img);
 
-      imageItem.appendChild(alink);
-      gallery.appendChild(imageItem);
+        imageItem.appendChild(alink);
+        gallery.appendChild(imageItem);
+
+        // 当所有图片都加载完成时隐藏 loading
+        loadedImagesCount++;
+        if (loadedImagesCount === pageImages.length) {
+          loadingElement.style.display = "none";
+        }
+      });
     });
 
     const currentPageElement = document.getElementById("currentPage");
