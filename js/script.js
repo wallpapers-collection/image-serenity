@@ -30,15 +30,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     gallery.innerHTML = "";
 
     let loadedImagesCount = 0;
-    pageImages.forEach(async (image) => {
-      const img = await loadImage(image.src);
-      img.alt = image.description || image.title;
-      img.title = image.description || image.title;
+    pageImages.forEach(async (el) => {
+      const img = await loadImage(el.src);
+      img.alt = el.description || el.title;
+      img.title = el.description || el.title;
       img.loading = "lazy";
       img.height = 400;
 
       const alink = document.createElement("a");
-      alink.href = image.src;
+      alink.href = el.src;
       alink.target = "_blank";
       alink.rel = "noopener noreferrer";
       alink.appendChild(img);
