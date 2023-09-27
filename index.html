@@ -44,6 +44,7 @@
     <title>Image Serenity</title>
   </head>
   <body>
+    <!-- 页头 -->
     <div class="header">
       <h1>Image Serenity</h1>
       <label class="switch">
@@ -52,6 +53,7 @@
         <span class="mode-label" id="darkMode">Dark Mode</span>
       </label>
     </div>
+    <!-- 导航 -->
     <header>
       <nav>
         <ul>
@@ -68,18 +70,14 @@
         </ul>
       </nav>
     </header>
-
+    <!-- 检索区域 -->
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search Image..." />
       <button id="searchButton">Search</button>
     </div>
-
+    <!-- 图片显示区域 -->
     <div class="image-gallery"></div>
-    <!-- 蒙版 -->
-    <div id="overlay" class="overlay"></div>
-    <!-- loading 元素 -->
-    <div id="loading" class="loading">Loading...</div>
-
+    <!-- 翻页区域 -->
     <div class="pagination-container">
       <button id="firstPage">First Page</button>
       <button id="prevPage">Previous Page</button>
@@ -91,7 +89,7 @@
       <button id="nextPage">Next Page</button>
       <button id="lastPage">Last Page</button>
     </div>
-
+    <!-- 页脚 -->
     <footer>
       <div class="container">
         <p>&copy; 2023 Image Serenity All Rights Reserved</p>
