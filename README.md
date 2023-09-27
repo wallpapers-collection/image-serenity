@@ -2,7 +2,7 @@
 
 English | [简体中文](./README_zh.md) | [日本語](./README_jp.md)
 
-Website URL: https://bilibili-tool.github.io/bilibili-picture
+Website URL: https://bilibili-tool.github.io/image-serenity
 
 The website currently offers the following features:
 
