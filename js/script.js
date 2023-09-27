@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.alt = el.description || el.title;
       img.title = el.description || el.title;
       img.height = 400;
-      loadImage(el.src, function (loadedImg) {
+      // 显示图片
+      img.src = el.src;
+      loadImage(el.src, function () {
         // 隐藏 loading 元素
         loadingElement.style.display = "none";
-        // 显示图片
-        img.src = loadedImg.src;
       });
       //将图片添加到link
       alink.appendChild(img);
