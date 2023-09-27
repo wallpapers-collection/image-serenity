@@ -149,28 +149,18 @@ button#searchButton {
 
 /* 添加 loading 样式 */
 .image-loading {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  line-height: 400px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   text-align: center;
-  padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 1.5rem;
-  z-index: 1; /* 在图片之上 */
-}
-
-/* 图片加载过程中隐藏图片，显示 loading */
-.image-item.loading img {
-  display: none;
-}
-
-.image-item.loading .image-loading {
-  display: block;
+  z-index: 1;
 }
 
 /* 夜间模式样式 */
