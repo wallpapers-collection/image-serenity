@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const gallery = document.querySelector(".image-gallery");
     while (gallery.firstChild) {
-      parent.removeChild(gallery.firstChild);
+      gallery.removeChild(gallery.firstChild);
     }
     pageImages.forEach((el) => {
       //创建图片项容器
