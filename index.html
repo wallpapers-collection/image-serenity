@@ -2,12 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="rating" content="adult" />
     <meta name="referrer" content="no-referrer" />
-    <meta content="Image Serenity - Seiri" property="og:title" />
-    <meta name="description" content="Image Serenity - Seiri" />
-    <meta property="og:description" content="Image Serenity - Seiri" />
-    <meta name="twitter:description" content="Image Serenity - Seiri" />
-    <meta name="keywords" content="picture,image,bilibili" />
+    <meta property="og:site_name" content="Image Serenity" />
+    <meta property="og:title" content="Image Serenity - Anime Image Board" />
+    <meta name="twitter:title" content="Image Serenity - Anime Image Board" />
+    <meta
+      name="description"
+      content="Image Serenity is a website that selects anime and photos"
+    />
+    <meta
+      property="og:description"
+      content="Image Serenity is a website that selects anime and photos"
+    />
+    <meta
+      name="twitter:description"
+      content="Image Serenity is a website that selects anime and photos"
+    />
+    <meta name="keywords" content="picture,image,bilibili,anime" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
@@ -21,11 +33,13 @@
     <meta content="telephone=no" name="format-detection" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta content="summary_large_image" name="twitter:card" />
-    <meta content="@Seiriryu" name="twitter:site" />
-    <meta content="@Seiriryu" name="twitter:creator" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" href="android-chrome-256x256.png" />
+    <link
+      rel="canonical"
+      href="https://github.com/bilibili-tool/image-serenity"
+    />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/script.js"></script>
     <!-- Google tag (gtag.js) -->
@@ -41,10 +55,10 @@
       gtag("js", new Date());
       gtag("config", "G-F72LVLBFN4");
     </script>
-    <title>Image Serenity</title>
+    <title>Image Serenity - Anime Image Board</title>
   </head>
   <body>
-    <!-- 页头 -->
+    <!-- header -->
     <div class="header">
       <h1>Image Serenity</h1>
       <label class="switch">
@@ -53,7 +67,7 @@
         <span class="mode-label" id="darkMode">Dark Mode</span>
       </label>
     </div>
-    <!-- 导航 -->
+    <!-- navagation -->
     <header>
       <nav>
         <ul>
@@ -70,14 +84,14 @@
         </ul>
       </nav>
     </header>
-    <!-- 检索区域 -->
+    <!-- search area -->
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search Image..." />
       <button id="searchButton">Search</button>
     </div>
-    <!-- 图片显示区域 -->
+    <!-- image area -->
     <div class="image-gallery"></div>
-    <!-- 翻页区域 -->
+    <!-- page area -->
     <div class="pagination-container">
       <button id="firstPage">First Page</button>
       <button id="prevPage">Previous Page</button>
@@ -89,7 +103,7 @@
       <button id="nextPage">Next Page</button>
       <button id="lastPage">Last Page</button>
     </div>
-    <!-- 页脚 -->
+    <!-- footer -->
     <footer>
       <div class="container">
         <p>&copy; 2023 Image Serenity All Rights Reserved</p>
