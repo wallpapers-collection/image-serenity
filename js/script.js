@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       gallery.appendChild(imageItem);
       // 页面设置
       const currentPageElement = document.getElementById("currentPage");
-      currentPageElement.textContent = 1;
+      currentPageElement.textContent = currentPage;
       const totalpageElement = document.getElementById("totalpage");
       totalpageElement.textContent = totalPages;
     });
