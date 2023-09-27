@@ -2,7 +2,7 @@
  
 [English](./README.md) | 简体中文 | [日本語](./README_jp.md)
 
-网站URL：https://bilibili-tool.github.io/bilibili-picture
+网站URL：https://bilibili-tool.github.io/image-serenity
 
 该网站目前实现的功能如下：
 
