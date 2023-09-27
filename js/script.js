@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const loadingElement = document.createElement("div");
       loadingElement.classList.add("image-loading");
       loadingElement.textContent = "Loading...";
+      loadingElement.style.display = "block";
       //创建link
       const alink = document.createElement("a");
       alink.href = el.src;
