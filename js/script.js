@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const pageImages = currentImages.slice(startIndex, endIndex);
 
     const gallery = document.querySelector(".image-gallery");
-    gallery.innerHTML = "";
-
+    while (gallery.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
     pageImages.forEach((el) => {
       //创建图片项容器
       const imageItem = document.createElement("div");
