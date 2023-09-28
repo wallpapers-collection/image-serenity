@@ -56,12 +56,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       imageItem.appendChild(loadingElement);
       //将图片项容器添加到图片显示区域
       gallery.appendChild(imageItem);
-      // 页面设置
-      const currentPageElement = document.getElementById("currentPage");
-      currentPageElement.textContent = currentPage;
-      const totalpageElement = document.getElementById("totalpage");
-      totalpageElement.textContent = totalPages;
     });
+    // 页面设置
+    const currentPageElement = document.getElementById("currentPage");
+    currentPageElement.textContent = currentPage;
+    const totalpageElement = document.getElementById("totalpage");
+    totalpageElement.textContent = totalPages;
   }
 
   // 点击第一页按钮
