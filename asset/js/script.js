@@ -1,17 +1,15 @@
 document.addEventListener("DOMContentLoaded", async function () {
+  showPageBtn();
   // 图片数据数组，包含图片路径、标题和类别
   const imageData = await loadPicture();
   //每页显示的件数
-  const itemsPerPage = 14;
+  const itemsPerPage = 10;
   //当前页图片
   let currentImages = imageData ? imageData.slice() : imageData;
   // 总页
   let totalPages = Math.ceil(currentImages.length / itemsPerPage);
-  //夜间模式的按钮
-  document.getElementById("toggleMode").addEventListener("change", function () {
-    toggleNightMode();
-  });
-
+  // 移动端当前页面
+  let mobileCurrentPage = 1;
   // 根据当前页数显示图片
   function displayImages(currentPage) {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -35,13 +33,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       const alink = document.createElement("a");
       alink.href = el.src;
       alink.target = "_blank";
-      alink.rel = "noopener noreferrer";
+      alink.rel = "noopener noreferrer nofollow";
 
       // 创建图片元素
       const img = new Image();
-      img.alt = el.description || el.title;
-      img.title = el.description || el.title;
-      img.height = 400;
+      img.alt = el.title;
+      img.title = el.title;
       // 显示图片
       img.src = el.src;
       loadImage(el.src, function () {
@@ -62,6 +59,47 @@ document.addEventListener("DOMContentLoaded", async function () {
     currentPageElement.textContent = currentPage;
     const totalpageElement = document.getElementById("totalpage");
     totalpageElement.textContent = totalPages;
+  }
+
+  // 切换夜间模式和白天模式
+  const modeIcon = document.querySelector(".icon");
+  modeIcon.addEventListener("click", function () {
+    document.body.classList.toggle("night-mode");
+    if (document.body.classList.contains("night-mode")) {
+      modeIcon.src = "asset/icons/sun.png";
+    } else {
+      modeIcon.src = "asset/icons/moon.png";
+    }
+  });
+
+  // 搜索功能
+  const searchButton = document.getElementById("searchButton");
+  const searchInput = document.getElementById("searchInput");
+  // 添加enter检索事件
+  searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+  //检索按钮按下事件
+  searchButton.addEventListener("click", performSearch);
+
+  // 检索函数
+  function performSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    if (!searchTerm.trim()) {
+      currentImages = imageData.slice();
+    } else {
+      currentImages = imageData.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchTerm) ||
+          item.description.toLowerCase().includes(searchTerm) ||
+          item.author_id.toLowerCase().includes(searchTerm)
+      );
+    }
+    totalPages = Math.ceil(currentImages.length / itemsPerPage);
+    mobileCurrentPage = 1;
+    displayImages(1);
   }
 
   // 点击第一页按钮
@@ -119,35 +157,74 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     displayImages(currentPage);
   });
+  // 加载更多按钮点击事件
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  loadMoreBtn.addEventListener("click", function () {
+    mobileCurrentPage++;
+    const startIndex = (mobileCurrentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageImages = currentImages.slice(startIndex, endIndex);
 
-  // 搜索功能
-  const searchButton = document.getElementById("searchButton");
-  const searchInput = document.getElementById("searchInput");
-  // 添加enter检索事件
-  searchInput.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      performSearch();
+    const gallery = document.querySelector(".image-gallery");
+    pageImages.forEach((el) => {
+      //创建图片项容器
+      const imageItem = document.createElement("div");
+      imageItem.classList.add("image-item");
+      // 创建 loading 元素
+      const loadingElement = document.createElement("div");
+      loadingElement.classList.add("image-loading");
+      loadingElement.textContent = "Loading...";
+      loadingElement.style.display = "block";
+      //创建link
+      const alink = document.createElement("a");
+      alink.href = el.src;
+      alink.target = "_blank";
+      alink.rel = "noopener noreferrer nofollow";
+
+      // 创建图片元素
+      const img = new Image();
+      img.alt = el.title;
+      img.title = el.title;
+      // 显示图片
+      img.src = el.src;
+      loadImage(el.src, function () {
+        // 隐藏 loading 元素
+        loadingElement.style.display = "none";
+      });
+      //将图片添加到link
+      alink.appendChild(img);
+      //到图片项容器到图片项容器
+      imageItem.appendChild(alink);
+      // 将 loading 和图片元素添加到图片项容器
+      imageItem.appendChild(loadingElement);
+      //将图片项容器添加到图片显示区域
+      gallery.appendChild(imageItem);
+    });
+
+    // 判断是否还有更多图片可以加载，如果没有，隐藏加载更多按钮
+    if (itemsPerPage > pageImages.length) {
+      loadMoreBtn.style.display = "none";
     }
   });
-  //检索按钮按下事件
-  searchButton.addEventListener("click", performSearch);
 
-  // 检索函数
-  function performSearch() {
-    const searchTerm = searchInput.value.toLowerCase();
-    if (!searchTerm.trim()) {
-      currentImages = imageData.slice();
+  // 向上滚动按钮
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  // 当用户滚动页面时，显示或隐藏返回顶部按钮
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 200) {
+      scrollTopBtn.classList.add("show");
     } else {
-      currentImages = imageData.filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchTerm) ||
-          item.description.toLowerCase().includes(searchTerm) ||
-          item.author_id.toLowerCase().includes(searchTerm)
-      );
+      scrollTopBtn.classList.remove("show");
     }
-    totalPages = Math.ceil(currentImages.length / itemsPerPage);
-    displayImages(1);
-  }
+  });
+
+  // 当用户点击返回顶部按钮时，滚动到页面顶部
+  scrollTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // 平滑滚动
+    });
+  });
 
   await loadLanguage();
   // 初始化显示图片
@@ -202,12 +279,11 @@ async function loadLanguage() {
   html[0].lang = userLanguage;
   // 加载对应的 JSON 文件
   try {
-    const response = await fetch(`lang/${userLanguage}.json`);
+    const response = await fetch(`asset/lang/${userLanguage}.json`);
     const data = await response.json();
     // 将文本内容应用到页面上
     document.getElementById("homeLink").textContent = data.home;
     document.getElementById("aboutLink").textContent = data.about;
-    document.getElementById("darkMode").textContent = data.dark_mode_label;
     document.getElementById("searchButton").textContent = data.search;
     document.getElementById("firstPage").textContent = data.first_page;
     document.getElementById("prevPage").textContent = data.prev_page;
@@ -216,4 +292,43 @@ async function loadLanguage() {
   } catch (e) {
     console.log(e);
   }
+}
+
+/**
+ * 显示翻页按钮
+ */
+function showPageBtn() {
+  if (isMobile()) {
+    const pagination = document.querySelector(".pagination-container");
+    pagination.style.display = "none";
+    const mobilePagination = document.querySelector(
+      ".mobile-pagination-container"
+    );
+    mobilePagination.style.display = "block";
+  } else {
+    const pagination = document.querySelector(".pagination-container");
+    pagination.style.display = "flex";
+    const mobilePagination = document.querySelector(
+      ".mobile-pagination-container"
+    );
+    mobilePagination.style.display = "none";
+  }
+}
+
+/**
+ * 判断是否是移动端
+ * @returns 移动端flg
+ */
+function isMobile() {
+  var userAgent = navigator.userAgent;
+  var mobileDeviceRegex =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+
+  if (
+    mobileDeviceRegex.test(userAgent) ||
+    window.matchMedia("only screen and (max-width: 768px)").matches
+  ) {
+    return true;
+  }
+  return false;
 }

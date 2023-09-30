@@ -40,8 +40,8 @@
       rel="canonical"
       href="https://bilibili-tool.github.io/image-serenity"
     />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="asset/css/styles.css" />
+    <script src="asset/js/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -62,9 +62,7 @@
     <div class="header">
       <h1>Image Serenity</h1>
       <label class="switch">
-        <input id="toggleMode" type="checkbox" />
-        <span class="slider round"></span>
-        <span class="mode-label" id="darkMode">Dark Mode</span>
+        <img src="asset/icons/moon.png" class="icon" />
       </label>
     </div>
     <!-- navagation -->
@@ -103,6 +101,13 @@
       <button id="nextPage">Next Page</button>
       <button id="lastPage">Last Page</button>
     </div>
+    <div class="mobile-pagination-container">
+      <!-- 加载更多按钮 -->
+      <button id="loadMoreBtn">load more</button>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="scrollTopBtn" class="scroll-top-btn">&#9650;</button>
     <!-- footer -->
     <footer>
       <div class="container">

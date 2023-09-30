@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 /* 基本样式 */
 body {
   font-family: Arial, sans-serif; /* 设置宋体为主字体，然后是 Arial 和 sans-serif 作为备用字体 */
@@ -9,23 +10,47 @@ body {
 }
 
 .header {
-  background-color: #333; /* 设置深灰色背景色 */
+  background-color: #00aeec; /* 设置深灰色背景色 */
   color: #fff; /* 设置白色文本颜色 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0 20px;
+  padding: 10px 20px 0;
   margin: 0;
 }
 
 header {
-  background-color: #333; /* 设置深灰色背景色 */
+  background-color: #00aeec; /* 设置深灰色背景色 */
   color: #fff; /* 设置白色文本颜色 */
   padding: 20px;
   display: flex;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 修改导航菜单样式 */
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+header nav li {
+  margin-right: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #ddd;
 }
 
 /* 切换按钮和说明的样式 */
@@ -87,13 +112,20 @@ input:checked + .slider:before {
 }
 
 button {
-  background-color: #333;
+  background-color: #fb7299;
   color: #fff; /* 设置白色按钮文本颜色 */
   border: none;
   cursor: pointer;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-weight: bold;
+}
+
+button:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
 }
 
 .search-container {
@@ -105,24 +137,15 @@ input[type="text"] {
   color: #333; /* 设置黑色输入框文本颜色 */
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 60%;
   margin-right: 10px;
   font-size: 16px;
 }
 
-button#searchButton {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 .image-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
   margin: 15px;
 }
@@ -131,13 +154,13 @@ button#searchButton {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .image-item img {
   margin: auto;
-  height: 400px;
-  width: 260px;
+  height: 600px;
+  width: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.2s;
@@ -153,12 +176,12 @@ button#searchButton {
   top: 0;
   left: 0;
   width: 100%;
-  line-height: 400px;
+  line-height: 600px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.5rem;
   z-index: 1;
 }
@@ -166,69 +189,54 @@ button#searchButton {
 /* 夜间模式样式 */
 .night-mode {
   background-color: #222;
-  color: #fff;
+  color: #ddd;
+}
+
+.night-mode .header {
+  background-color: #333;
+  color: #ddd !important;
 }
 
 .night-mode header {
   background-color: #333;
-  color: #fff;
+  color: #ddd !important;
 }
 
 .night-mode button {
-  background-color: #333;
-  color: #fff;
+  background-color: #333 !important;
+  color: #ddd !important;
   border-color: #fff;
 }
 
 .night-mode input[type="text"] {
   background-color: #444;
-  color: #fff;
-  border-color: #fff;
-}
-
-.night-mode .search-container input[type="text"]::placeholder {
-  color: #ccc;
+  color: #ddd !important;
+  border-color: #fff !important;
 }
 
 /* .night-mode .image-item img {
-  filter: grayscale(100%) brightness(0.8);
+  filter: grayscale(100%) brightness(0.9);
 } */
 
 .night-mode .pagination-container button {
-  color: #fff;
+  color: #ddd !important;
 }
 
-/* 修改footer颜色 */
-footer {
-  text-align: center;
-  padding: 10px 0;
-  background-color: #333;
-  color: #fff;
-  font-size: 14px;
+.night-mode .search-container input[type="text"]::placeholder {
+  color: #ccc !important;
 }
 
-/* 修改导航菜单样式 */
-header nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
+.night-mode footer {
+  background-color: #333 !important;
+  color: #ddd !important;
 }
 
-header nav li {
-  margin-right: 20px;
+.night-mode a {
+  color: #ddd !important;
 }
 
-header nav a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-header nav a:hover {
-  color: #ddd;
+.night-mode body {
+  color: #ddd !important;
 }
 
 /* 翻页按钮居中 */
@@ -247,4 +255,59 @@ header nav a:hover {
   display: flex;
   align-items: center;
   margin: 0 10px;
+}
+
+.mobile-pagination-container {
+  display: none;
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-pagination-container button {
+  margin: 0 1px;
+  border-radius: 3em;
+  padding: 10px 10em;
+}
+
+/* 修改footer颜色 */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #00aeec;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* 返回顶部按钮样式 */
+.scroll-top-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 25em;
+  background-color: rgb(0, 174, 236, 0.5);
+  color: #fff; /* 按钮文本颜色 */
+  font-size: 16px; /* 文本字体大小 */
+  font-weight: bold; /* 文本加粗 */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+}
+
+/* 示例悬停效果 */
+.scroll-top-btn:hover {
+  background-color: rgb(0, 174, 236, 0.8);
+  transition: background-color 0.3s ease; /* 添加平滑的过渡效果 */
+}
+
+.scroll-top-btn.show {
+  display: block;
+}
+
+.icon {
+  width: 30px;
+  cursor: pointer;
 }
