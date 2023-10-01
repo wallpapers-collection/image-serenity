@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", async function () {
       const img = new Image();
       img.alt = el.description;
       img.title = el.description;
-      img.dataId = el.id;
-      img.dataCategory = el.category;
-      img.dataSize = el.size;
-      img.dataDatetime = el.date_time;
+      img.dataset.id = el.id;
+      img.dataset.category = el.category;
+      img.dataset.size = el.size;
+      img.dataset.atetime = el.date_time;
       // 显示图片
       img.src = el.src;
       loadImage(el.src, function () {
