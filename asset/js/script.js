@@ -161,6 +161,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     displayImages(currentPage);
   });
+
+  // 监听键盘事件
+  document.addEventListener("keydown", function (event) {
+    const currentPage = parseInt(
+      document.getElementById("currentPage").textContent
+    );
+    const totalPages = Math.ceil(currentImages.length / itemsPerPage);
+    if (event.key === "ArrowLeft" && currentPage > 1) {
+      displayImages(currentPage - 1);
+    } else if (event.key === "ArrowRight" && currentPage < totalPages) {
+      displayImages(currentPage + 1);
+    }
+  });
+
   // 加载更多按钮点击事件
   const loadMoreBtn = document.getElementById("loadMoreBtn");
   loadMoreBtn.addEventListener("click", function () {
