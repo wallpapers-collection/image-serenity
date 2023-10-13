@@ -66,13 +66,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   // 切换夜间模式和白天模式
-  const modeIcon = document.querySelector(".icon");
-  modeIcon.addEventListener("click", function () {
+  const darkmode = document.querySelector(".darkmode-btn");
+  darkmode.addEventListener("click", function () {
     document.body.classList.toggle("night-mode");
     if (document.body.classList.contains("night-mode")) {
-      modeIcon.src = "asset/icons/sun.png";
+      darkmode.children[0].classList.remove("fa-moon");
+      darkmode.children[0].classList.add("fa-sun");
     } else {
-      modeIcon.src = "asset/icons/moon.png";
+      darkmode.children[0].classList.remove("fa-sun");
+      darkmode.children[0].classList.add("fa-moon");
     }
   });
 
