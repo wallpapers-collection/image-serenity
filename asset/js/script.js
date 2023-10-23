@@ -74,7 +74,9 @@ document.addEventListener("DOMContentLoaded", async function () {
    * 更新URL中的page参数
    */
   function updateURL(page) {
-    const newUrl = window.location.origin + "?page=" + page;
+    const allPath = window.location.origin + window.location.pathname;
+    const newUrl =
+      allPath.substring(0, allPath.lastIndexOf("/")) + "?page=" + page;
     window.history.pushState({ path: newUrl }, "", newUrl);
   }
 
