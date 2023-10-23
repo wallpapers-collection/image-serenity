@@ -75,8 +75,7 @@ document.addEventListener("DOMContentLoaded", async function () {
    */
   function updateURL(page) {
     const allPath = window.location.origin + window.location.pathname;
-    const newUrl =
-      allPath.substring(0, allPath.lastIndexOf("/")) + "?page=" + page;
+    const newUrl = allPath + "?page=" + page;
     window.history.pushState({ path: newUrl }, "", newUrl);
   }
 
