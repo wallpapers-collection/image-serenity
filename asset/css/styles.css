@@ -307,7 +307,7 @@ footer {
   display: block;
 }
 
-/* 返回顶部按钮样式 */
+/* 夜间模式按钮 */
 .darkmode-btn {
   position: fixed;
   bottom: 20px;
@@ -330,7 +330,65 @@ footer {
   transition: background-color 0.3s ease; /* 添加平滑的过渡效果 */
 }
 
+.loader-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .icon {
   width: 30px;
   cursor: pointer;
+}
+
+.detail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  background: rgb(221, 94, 54, 0.5);
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px;
+  height: 800px;
+}
+
+.container-row {
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.detail-img {
+  max-height: 700px;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.image-detail {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  padding-bottom: 20px;
 }
