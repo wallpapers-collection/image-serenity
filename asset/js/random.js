@@ -60,13 +60,47 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   // 刷新按钮点击事件
-  document.getElementById("refreshButton").addEventListener("click", function () {
-    showRandomImages();
-  });
+  document
+    .getElementById("refreshButton")
+    .addEventListener("click", function () {
+      showRandomImages();
+    });
 
   // 返回按钮点击事件
   document.getElementById("backButton").addEventListener("click", function () {
     window.location.href = "https://bilibili-tool.github.io/image-serenity"; // 返回主页面
+  });
+
+  // 切换夜间模式和白天模式
+  const darkmode = document.querySelector(".darkmode-btn");
+  darkmode.addEventListener("click", function () {
+    document.body.classList.toggle("night-mode");
+    if (document.body.classList.contains("night-mode")) {
+      darkmode.children[0].classList.remove("fa-moon");
+      darkmode.children[0].classList.add("fa-sun");
+    } else {
+      darkmode.children[0].classList.remove("fa-sun");
+      darkmode.children[0].classList.add("fa-moon");
+    }
+  });
+
+  // 向上滚动按钮
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  // 当用户滚动页面时，显示或隐藏返回顶部按钮
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 200) {
+      scrollTopBtn.classList.add("show");
+    } else {
+      scrollTopBtn.classList.remove("show");
+    }
+  });
+
+  // 当用户点击返回顶部按钮时，滚动到页面顶部
+  scrollTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // 平滑滚动
+    });
   });
 
   // 加载语言
@@ -83,11 +117,6 @@ function loadImage(src, callback) {
   };
   img.src = src;
 }
-// 切换夜间模式的函数
-function toggleNightMode() {
-    document.body.classList.toggle("night-mode");
-}
-
 
 /**
  * 加载所有图片
