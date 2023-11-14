@@ -349,7 +349,6 @@ async function loadLanguage() {
     const response = await fetch(`asset/lang/${userLanguage}.json`);
     const data = await response.json();
     // 将文本内容应用到页面上
-    document.getElementById("homeLink").textContent = data.home;
     document.getElementById("aboutLink").textContent = data.about;
     document.getElementById("searchButton").textContent = data.search;
     document.getElementById("firstPage").textContent = data.first_page;
