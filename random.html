@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="referrer" content="no-referrer" />
     <meta property="og:site_name" content="Image Serenity" />
-    <meta property="og:title" content="Image Serenity - Anime Image Board" />
-    <meta name="twitter:title" content="Image Serenity - Anime Image Board" />
+    <meta property="og:title" content="Image Serenity - Random Anime Image Board" />
+    <meta name="twitter:title" content="Image Serenity - Random Anime Image Board" />
     <meta
       name="description"
-      content="Image Serenity is a website that selects anime and photos"
+      content="Random Image Serenity"
     />
     <meta
       property="og:description"
-      content="Image Serenity is a website that selects anime and photos"
+      content="Random Image Serenity"
     />
     <meta
       name="twitter:description"
-      content="Image Serenity is a website that selects anime and photos"
+      content="Random Image Serenity"
     />
-    <meta name="keywords" content="picture,image,bilibili,anime" />
+    <meta name="keywords" content="picture,image,bilibili,anime,random" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
@@ -31,14 +30,13 @@
     <meta content="#333" name="theme-color" />
     <meta content="telephone=no" name="format-detection" />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-    <meta name="yandex-verification" content="33ddc622f7f6ea96" />
     <meta content="summary_large_image" name="twitter:card" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" href="android-chrome-256x256.png" />
     <link
       rel="canonical"
-      href="https://bilibili-tool.github.io/image-serenity"
+      href="https://bilibili-tool.github.io/image-serenity/random.html"
     />
     <link rel="stylesheet" href="asset/css/styles.css" />
     <link
@@ -48,7 +46,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="asset/js/script.js"></script>
+    <script src="asset/js/random.js"></script>
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -75,28 +73,11 @@
     </div>
     <!-- search area -->
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search Image..." />
-      <button id="searchButton">Search</button>
-      <button id="randomButton">Random Show</button>
+      <button id="refreshButton">Refresh</button>
+      <button id="backButton">Back</button>
     </div>
     <!-- image area -->
     <div class="image-gallery"></div>
-    <!-- page area -->
-    <div class="pagination-container">
-      <button id="firstPage">First Page</button>
-      <button id="prevPage">Previous Page</button>
-      <span>
-        <div id="currentPage" contenteditable="true">1</div>
-        /
-        <div id="totalpage">1</div>
-      </span>
-      <button id="nextPage">Next Page</button>
-      <button id="lastPage">Last Page</button>
-    </div>
-    <div class="mobile-pagination-container">
-      <!-- 加载更多按钮 -->
-      <button id="loadMoreBtn">load more</button>
-    </div>
     <!-- 夜间模式 -->
     <button id="darkmode" class="darkmode-btn" aria-label="dark mode">
       <i class="fa-solid fa-moon"></i>
@@ -108,7 +89,7 @@
       <div class="container">
         <p>&copy; 2023 Image Serenity All Rights Reserved</p>
         <p>
-          <a href="#">Privacy Policy</a>  |
+          <a href="#">Privacy Policy</a> |
           <a href="https://twitter.com/Seiriryu">About Us</a>
         </p>
       </div>

@@ -7,5 +7,8 @@
   "prev_page": "前ページ",
   "next_page": "次ページ",
   "last_page": "最後のページ",
-  "no_results": "該当する情報が見つかりませんでした。"
+  "no_results": "該当する情報が見つかりませんでした。",
+  "refresh": "リフレッシュ",
+  "back": "戻る",
+  "random": "ランダム表示"
 }

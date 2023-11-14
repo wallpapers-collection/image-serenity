@@ -7,5 +7,8 @@
   "prev_page": "Previous Page",
   "next_page": "Next Page",
   "last_page": "Last Page",
-  "no_results": "No results found"
+  "no_results": "No results found",
+  "refresh": "Refresh",
+  "back": "Back",
+  "random": "Random Show"
 }
