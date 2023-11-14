@@ -310,11 +310,6 @@ function loadImage(src, callback) {
   img.src = src;
 }
 
-// 切换夜间模式的函数
-function toggleNightMode() {
-  document.body.classList.toggle("night-mode");
-}
-
 /**
  * 加载所有图片
  * @returns 图片
