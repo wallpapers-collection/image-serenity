@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   let currentImages = imageData ? imageData.slice() : imageData;
   // 总页
   let totalPages = Math.ceil(currentImages?.length / itemsPerPage);
-
   // 移动端当前页面
   let mobileCurrentPage = 1;
 
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const pageImages = currentImages.slice(startIndex, endIndex);
-
     const gallery = document.querySelector(".image-gallery");
     while (gallery.firstChild) {
       gallery.removeChild(gallery.firstChild);
@@ -271,6 +269,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
+  // 随机按钮点击事件
+  const randomButton = document.getElementById("randomButton");
+  randomButton.addEventListener("click", function () {
+    window.location.href =
+      "https://bilibili-tool.github.io/image-serenity/random.html"; // 返回主页面
+  });
+
   // 向上滚动按钮
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   // 当用户滚动页面时，显示或隐藏返回顶部按钮
@@ -356,6 +361,7 @@ async function loadLanguage() {
     document.getElementById("prevPage").textContent = data.prev_page;
     document.getElementById("nextPage").textContent = data.next_page;
     document.getElementById("lastPage").textContent = data.last_page;
+    document.getElementById("randomButton").textContent = data.random;
   } catch (e) {
     console.log(e);
   }
