@@ -115,7 +115,7 @@ button {
   color: #fff; /* 设置白色按钮文本颜色 */
   border: none;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 10px;
   font-weight: bold;
 }
@@ -137,7 +137,7 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  width: 60%;
+  width: 40%;
   margin-right: 10px;
   font-size: 16px;
 }
@@ -267,7 +267,7 @@ input[type="text"] {
 .mobile-pagination-container button {
   margin: 0 1px;
   border-radius: 3em;
-  padding: 10px 10em;
+  padding: 15px 10em;
 }
 
 /* 修改footer颜色 */
