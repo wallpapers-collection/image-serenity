@@ -247,9 +247,14 @@ document.addEventListener("DOMContentLoaded", async function () {
          // 隐藏 loading 元素
          loadingElement.style.display = "none";
       };
+      img.alt = el.description;
+      img.title = el.description;
+      img.dataset.id = el.id;
+      img.dataset.author_id = el.author_id;
+      img.dataset.category = el.category;
+      img.dataset.size = el.size;
+      img.dataset.datetime = el.date_time;
       img.src = el.src;
-      img.alt = el.title;
-      img.title = el.title;
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
