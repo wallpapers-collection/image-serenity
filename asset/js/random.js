@@ -36,18 +36,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // 创建图片元素
       const img = new Image();
+      img.onload = function () {
+        // 隐藏 loading 元素
+        loadingElement.style.display = "none";
+      };
       img.alt = el.description;
       img.title = el.description;
       img.dataset.id = el.id;
+      img.dataset.author_id = el.author_id;
       img.dataset.category = el.category;
       img.dataset.size = el.size;
-      img.dataset.atetime = el.date_time;
-      // 显示图片
+      img.dataset.datetime = el.date_time;
       img.src = el.src;
-      loadImage(el.src, function () {
-        // 隐藏 loading 元素
-        loadingElement.style.display = "none";
-      });
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -108,15 +108,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 初始加载时显示随机图片
   showRandomImages();
 });
-
-// 创建一个用于加载图片的函数
-function loadImage(src, callback) {
-  const img = new Image();
-  img.onload = function () {
-    callback(img);
-  };
-  img.src = src;
-}
 
 /**
  * 加载所有图片
