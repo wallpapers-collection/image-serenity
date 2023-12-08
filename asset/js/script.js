@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
       img.src = el.src;
+      img.loading="lazy";
+      img.decoding="async";
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -255,6 +257,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
       img.src = el.src;
+      img.loading="lazy";
+      img.decoding="async";
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
