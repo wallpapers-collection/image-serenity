@@ -242,17 +242,14 @@ document.addEventListener("DOMContentLoaded", async function () {
       alink.href = el.src;
       alink.target = "_blank";
       alink.rel = "noopener noreferrer nofollow";
-
-      // 创建图片元素
       const img = new Image();
+      img.onload = function () {
+         // 隐藏 loading 元素
+         loadingElement.style.display = "none";
+      };
+      img.src = el.src;
       img.alt = el.title;
       img.title = el.title;
-      // 显示图片
-      img.src = el.src;
-      loadImage(el.src, function () {
-        // 隐藏 loading 元素
-        loadingElement.style.display = "none";
-      });
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -300,15 +297,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 初始化显示图片
   displayImagesAndUpdateURL(getCurrentPage());
 });
-
-// 创建一个用于加载图片的函数
-function loadImage(src, callback) {
-  const img = new Image();
-  img.onload = function () {
-    callback(img);
-  };
-  img.src = src;
-}
 
 /**
  * 加载所有图片
