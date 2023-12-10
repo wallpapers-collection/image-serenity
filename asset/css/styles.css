@@ -1,118 +1,50 @@
-/* 基本样式 */
 body {
-  font-family: Arial, sans-serif; /* 设置宋体为主字体，然后是 Arial 和 sans-serif 作为备用字体 */
-  background-color: #f0f0f0; /* 设置浅灰色背景色 */
-  color: #333; /* 设置黑色文本颜色 */
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
   transition: background-color 0.5s, color 0.5s;
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  margin: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
+  }
+
+  .image-gallery {
+    margin: 150px 15px 15px !important;
+  }
+  
+}
+
 .header {
-  background-color: #00aeec; /* 设置深灰色背景色 */
-  color: #fff; /* 设置白色文本颜色 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px 0;
-  margin: 0;
-}
-
-header {
-  background-color: #00aeec; /* 设置深灰色背景色 */
-  color: #fff; /* 设置白色文本颜色 */
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* 修改导航菜单样式 */
-header nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-header nav li {
-  margin-right: 20px;
-}
-
-header nav a {
-  text-decoration: none;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #00aeec;
   color: #fff;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-header nav a:hover {
-  color: #ddd;
-}
-
-/* 切换按钮和说明的样式 */
-.switch {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
   align-items: center;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: relative;
-  cursor: pointer;
-  width: 40px;
-  height: 20px;
-  background-color: #ccc; /* 设置橙色背景色 */
-  transition: 0.4s;
-  border-radius: 20px;
-  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
 }
 
 a {
-  text-decoration: none; /* 去掉下划线 */
-  color: #fff; /* 设置黑色文本颜色 */
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-  background-color: #fff;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #ccc; /* 设置橙色选中状态的背景色 */
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #ccc; /* 设置橙色选中状态的阴影颜色 */
-}
-
-input:checked + .slider:before {
-  transform: translateX(20px);
-}
-
-/* 夜间模式按钮说明的样式 */
-.mode-label {
-  font-size: 16px;
-  vertical-align: middle;
+  text-decoration: none;
+  color: #fff;
 }
 
 button {
   background-color: #fb7299;
-  color: #fff; /* 设置白色按钮文本颜色 */
+  color: #fff;
   border: none;
   cursor: pointer;
   padding: 10px 10px;
@@ -128,17 +60,26 @@ button:active {
 }
 
 .search-container {
+  display: flex;
+  justify-content: center;
   text-align: center;
-  margin-top: 20px;
+  margin: 10px 8px;
+}
+
+.search-container button {
+  margin: 0 8px;
+}
+
+.search-container :last-child {
+  margin-left: 0;
 }
 
 input[type="text"] {
-  color: #333; /* 设置黑色输入框文本颜色 */
+  color: #333;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
   width: 40%;
-  margin-right: 10px;
   font-size: 16px;
 }
 
@@ -146,7 +87,7 @@ input[type="text"] {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
-  margin: 15px;
+  margin: 90px 15px 15px;
 }
 
 .image-item {
@@ -202,7 +143,7 @@ input[type="text"] {
 }
 
 .night-mode button {
-  background-color: #333 !important;
+  background-color: #4b4a4a !important;
   color: #ddd !important;
   border-color: #fff;
 }
@@ -216,10 +157,6 @@ input[type="text"] {
 /* .night-mode .image-item img {
   filter: grayscale(100%) brightness(0.9);
 } */
-
-.night-mode .pagination-container button {
-  color: #ddd !important;
-}
 
 .night-mode .search-container input[type="text"]::placeholder {
   color: #ccc !important;
@@ -238,8 +175,8 @@ input[type="text"] {
   color: #ddd !important;
 }
 
-/* 翻页按钮居中 */
 .pagination-container {
+  position: relative;
   text-align: center;
   margin: 20px auto;
   display: flex;
@@ -272,6 +209,7 @@ input[type="text"] {
 
 /* 修改footer颜色 */
 footer {
+  position: relative;
   text-align: center;
   padding: 10px 0;
   background-color: #00aeec;
@@ -288,19 +226,20 @@ footer {
   padding: 10px 20px;
   border-radius: 25em;
   background-color: rgb(0, 174, 236, 0.5);
-  color: #fff; /* 按钮文本颜色 */
-  font-size: 16px; /* 文本字体大小 */
-  font-weight: bold; /* 文本加粗 */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
   cursor: pointer;
   width: 55px;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
 
 /* 示例悬停效果 */
 .scroll-top-btn:hover {
   background-color: rgb(0, 174, 236, 0.8);
-  transition: background-color 0.3s ease; /* 添加平滑的过渡效果 */
+  transition: background-color 0.3s ease;
 }
 
 .scroll-top-btn.show {
@@ -321,13 +260,14 @@ footer {
   border: none;
   cursor: pointer;
   width: 55px;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
 
 /* 示例悬停效果 */
 .darkmode-btn:hover {
   background-color: rgb(0, 174, 236, 0.8);
-  transition: background-color 0.3s ease; /* 添加平滑的过渡效果 */
+  transition: background-color 0.3s ease;
 }
 
 .loader-wrapper {
@@ -358,6 +298,7 @@ footer {
     transform: rotate(360deg);
   }
 }
+
 .icon {
   width: 30px;
   cursor: pointer;
