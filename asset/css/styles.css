@@ -123,7 +123,7 @@ input[type="text"] {
   text-align: center;
   border-radius: 10px;
   font-size: 1.5rem;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* 夜间模式样式 */
