@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         // 隐藏 loading 元素
         loadingElement.style.display = "none";
       };
+      img.onerror = function () {
+        img.src = "./asset/images/default.png";
+      };
       img.alt = el.description;
       img.title = el.description;
       img.dataset.id = el.id;
@@ -52,8 +55,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
       img.src = el.src;
-      img.loading="lazy";
-      img.decoding="async";
+      img.loading = "lazy";
+      img.decoding = "async";
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -246,8 +249,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       alink.rel = "noopener noreferrer nofollow";
       const img = new Image();
       img.onload = function () {
-         // 隐藏 loading 元素
-         loadingElement.style.display = "none";
+        // 隐藏 loading 元素
+        loadingElement.style.display = "none";
+      };
+      img.onerror = function () {
+        img.src = "./asset/images/default.png";
       };
       img.alt = el.description;
       img.title = el.description;
@@ -257,8 +263,8 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
       img.src = el.src;
-      img.loading="lazy";
-      img.decoding="async";
+      img.loading = "lazy";
+      img.decoding = "async";
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -279,7 +285,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const randomButton = document.getElementById("randomButton");
   randomButton.addEventListener("click", function () {
     window.location.href =
-      "https://bilibili-tool.github.io/image-serenity/random.html"; // 返回主页面
+      "https://bilibili-tool.github.io/image-serenity/random.html";
   });
 
   // 向上滚动按钮
