@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // 返回按钮点击事件
   document.getElementById("backButton").addEventListener("click", function () {
-    window.location.href = "https://bilibili-tool.github.io/image-serenity"; // 返回主页面
+    window.location.href = "https://wallpapers-collection.github.io/image-serenity"; // 返回主页面
   });
 
   // 切换夜间模式和白天模式
