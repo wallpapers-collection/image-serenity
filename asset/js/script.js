@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const randomButton = document.getElementById("randomButton");
   randomButton.addEventListener("click", function () {
     window.location.href =
-      "https://bilibili-tool.github.io/image-serenity/random.html";
+      "https://wallpapers-collection.github.io/image-serenity/random.html";
   });
 
   // 向上滚动按钮
