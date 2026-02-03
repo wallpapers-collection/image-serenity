@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.category = el.category;
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
-      img.src = el.src;
+      img.src = `${el.src}@480w_60q.webp`;
       img.loading = "lazy";
       img.decoding = "async";
       //将图片添加到link
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         (item) =>
           item.title.toLowerCase().includes(searchTerm) ||
           item.description.toLowerCase().includes(searchTerm) ||
-          item.author_id.toLowerCase().includes(searchTerm)
+          item.author_id.toLowerCase().includes(searchTerm),
       );
     }
     totalPages = Math.ceil(currentImages.length / itemsPerPage);
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   prevPageButton.addEventListener("click", function () {
     // 获取当前页数
     const currentPage = parseInt(
-      document.getElementById("currentPage").textContent
+      document.getElementById("currentPage").textContent,
     );
     if (currentPage > 1) {
       displayImagesAndUpdateURL(currentPage - 1);
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   nextPageButton.addEventListener("click", function () {
     // 获取当前页数和总页数
     const currentPage = parseInt(
-      document.getElementById("currentPage").textContent
+      document.getElementById("currentPage").textContent,
     );
     const totalPages = Math.ceil(currentImages.length / itemsPerPage);
     if (currentPage < totalPages) {
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // 监听键盘事件
   document.addEventListener("keydown", function (event) {
     const currentPage = parseInt(
-      document.getElementById("currentPage").textContent
+      document.getElementById("currentPage").textContent,
     );
     const totalPages = Math.ceil(currentImages.length / itemsPerPage);
     if (event.key === "ArrowLeft" && currentPage > 1) {
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.category = el.category;
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
-      img.src = el.src;
+      img.src = `${el.src}@480w_60q.webp`;
       img.loading = "lazy";
       img.decoding = "async";
       //将图片添加到link
@@ -371,14 +371,14 @@ function showPageBtn() {
     const pagination = document.querySelector(".pagination-container");
     pagination.style.display = "none";
     const mobilePagination = document.querySelector(
-      ".mobile-pagination-container"
+      ".mobile-pagination-container",
     );
     mobilePagination.style.display = "block";
   } else {
     const pagination = document.querySelector(".pagination-container");
     pagination.style.display = "flex";
     const mobilePagination = document.querySelector(
-      ".mobile-pagination-container"
+      ".mobile-pagination-container",
     );
     mobilePagination.style.display = "none";
   }

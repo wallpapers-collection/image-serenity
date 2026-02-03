@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       img.dataset.category = el.category;
       img.dataset.size = el.size;
       img.dataset.datetime = el.date_time;
-      img.src = el.src;
-      img.loading="lazy";
-      img.decoding="async";
+      img.src = `${el.src}@480w_60q.webp`;
+      img.loading = "lazy";
+      img.decoding = "async";
       //将图片添加到link
       alink.appendChild(img);
       //到图片项容器到图片项容器
@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // 返回按钮点击事件
   document.getElementById("backButton").addEventListener("click", function () {
-    window.location.href = "https://wallpapers-collection.github.io/image-serenity"; // 返回主页面
+    window.location.href =
+      "https://wallpapers-collection.github.io/image-serenity"; // 返回主页面
   });
 
   // 切换夜间模式和白天模式
