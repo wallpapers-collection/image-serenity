@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   randomButton.addEventListener("click", function () {
-    window.location.href = "/random.html";
+    window.location.href = "random.html";
   });
 
   let scrollTicking = false;
@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 async function loadPicture() {
   try {
-    const response = await fetch("/raw/datas.json", {
+    const response = await fetch("raw/datas.json", {
       cache: "force-cache",
     });
     let datas = await response.json();

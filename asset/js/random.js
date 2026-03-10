@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 async function loadPicture() {
   try {
-    const response = await fetch("/raw/datas.json", {
+    const response = await fetch("raw/datas.json", {
       cache: "force-cache",
     });
     let datas = await response.json();
