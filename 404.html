@@ -37,9 +37,86 @@
     <link rel="icon" type="image/png" href="android-chrome-256x256.png" />
     <link
       rel="canonical"
-      href="https://bilibili-tool.github.io/image-serenity"
+      href="https://bilibili-tool.github.io/image-serenity/404.html"
     />
     <link rel="stylesheet" href="asset/css/styles.css" />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 0 20px;
+        text-align: center;
+      }
+      .nf-card {
+        max-width: 720px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 22px;
+        padding: 34px 28px 30px;
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+      }
+      .nf-code {
+        font-size: 68px;
+        font-weight: 800;
+        margin: 0;
+        color: #0ea5e9;
+      }
+      .nf-title {
+        font-size: 24px;
+        margin: 6px 0 10px;
+        color: #0f172a;
+      }
+      .nf-desc {
+        margin: 0 0 22px;
+        color: #5b6c86;
+        line-height: 1.5;
+      }
+      .nf-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .nf-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(14, 165, 233, 0.35);
+      }
+      .nf-actions a.primary {
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        color: #fff;
+      }
+      .nf-actions a.ghost {
+        background: rgba(15, 23, 42, 0.06);
+        color: #0f172a;
+      }
+      footer {
+        margin-top: 26px;
+        background: transparent;
+        color: #5b6c86;
+      }
+      footer a {
+        color: #0284c7;
+      }
+      @media (max-width: 520px) {
+        .nf-card {
+          padding: 28px 22px 26px;
+        }
+        .nf-code {
+          font-size: 56px;
+        }
+        .nf-title {
+          font-size: 20px;
+        }
+      }
+    </style>
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -56,30 +133,24 @@
     <title>404 Page Not Found</title>
   </head>
   <body>
-    <div class="header">
-      <h1>404</h1>
-    </div>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="https://bilibili-tool.github.io/image-serenity" id="homeLink">Home</a></li>
-          <li>
-            <a href="https://twitter.com/Seiriryu" id="aboutLink">About</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="image-gallery">
-      <h2>Page Not Found</h2>
-    </div>
-    <footer>
-      <div class="container">
+    <main class="nf-card">
+      <p class="nf-code">404</p>
+      <p class="nf-title">Oops, page not found.</p>
+      <p class="nf-desc">
+        The link might be broken or the page has moved. Head back to the gallery
+        or try a fresh random pick.
+      </p>
+      <div class="nf-actions">
+        <a class="primary" href="index.html">Back to Home</a>
+        <a class="ghost" href="random.html">Random Show</a>
+      </div>
+      <footer>
         <p>&copy; 2025 Image Serenity All Rights Reserved</p>
         <p>
-          <a href="#">Privacy Policy</a> |
-          <a href="https://twitter.com/Seiriryu">About Us</a>
+          <a href="privacy.html">Privacy Policy</a> |
+          <a href="about.html">About Us</a>
         </p>
-      </div>
-    </footer>
+      </footer>
+    </main>
   </body>
 </html>

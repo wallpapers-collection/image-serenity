@@ -38,8 +38,10 @@
     <link rel="icon" type="image/png" href="android-chrome-256x256.png" />
     <link
       rel="canonical"
-      href="https://bilibili-tool.github.io/image-serenity"
+      href="https://wallpapers-collection.github.iimage-serenity"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="asset/css/styles.css" />
     <link
       rel="stylesheet"
@@ -48,7 +50,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="asset/js/script.js"></script>
+    <script src="asset/js/script.js" defer></script>
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -72,10 +74,11 @@
     <!-- header -->
     <div class="header">
       <h1>
-        <a href="https://bilibili-tool.github.io/image-serenity/">
+        <a href="https://wallpapers-collection.github.iimage-serenity/">
           Image Serenity
         </a>
       </h1>
+      <p class="tagline">Curated anime & photography to unwind fast.</p>
       <!-- search area -->
       <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search Image..." />
@@ -108,12 +111,35 @@
     <!-- 返回顶部按钮 -->
     <button id="scrollTopBtn" class="scroll-top-btn">&#9650;</button>
     <!-- footer -->
+    <div id="detailModal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-card">
+        <button class="modal-close" aria-label="close detail">&times;</button>
+        <div class="modal-image-wrap">
+          <img id="modalImg" alt="detail" />
+        </div>
+        <div class="modal-meta">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <div class="meta-grid">
+            <span id="modalAuthor"></span>
+            <span id="modalCategory"></span>
+            <span id="modalSize"></span>
+            <span id="modalDatetime"></span>
+            <span id="modalId"></span>
+          </div>
+          <div class="modal-actions">
+            <a id="modalOpenRaw" class="primary" target="_blank" rel="noopener noreferrer">Open Original</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer>
       <div class="container">
         <p>&copy; 2025 Image Serenity All Rights Reserved</p>
         <p>
-          <a href="#">Privacy Policy</a> |
-          <a href="https://twitter.com/Seiriryu">About Us</a>
+          <a href="privacy.html">Privacy Policy</a> |
+          <a href="about.html">About Us</a>
         </p>
       </div>
     </footer>

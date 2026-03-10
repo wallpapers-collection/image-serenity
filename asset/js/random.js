@@ -1,81 +1,125 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  // 图片数据数组，包含图片路径、标题和类别
-  const imageData = await loadPicture();
+  const gallery = document.querySelector(".image-gallery");
+  const refreshButton = document.getElementById("refreshButton");
+  const backButton = document.getElementById("backButton");
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const darkmode = document.querySelector(".darkmode-btn");
+  // modal kept for potential inline view
 
-  // 随机取出10张图片
-  function getRandomImages() {
-    const randomImages = [];
-    for (let i = 0; i < 10; i++) {
-      const randomIndex = Math.floor(Math.random() * imageData.length);
-      randomImages.push(imageData[randomIndex]);
-    }
-    return randomImages;
+  let imageData = await loadPicture();
+  if (!Array.isArray(imageData)) {
+    imageData = [];
   }
 
-  // 显示随机图片
+  function displayTitle(item) {
+    const pick = (item.description || "")
+      .split(/\r?\n/)
+      .map((s) => s.trim().replace(/[【】]/g, ""))
+      .find((s) => s.length > 0);
+    const desc = pick && pick.length > 0 ? pick : null;
+    const looksLikeHash = /^[a-f0-9]{20,}\.(jpe?g|png|webp)$/i.test(
+      item.title || "",
+    );
+    if (desc) return desc.slice(0, 48);
+    if (!looksLikeHash && item.title) return item.title;
+    if (item.author_id) return `@${item.author_id}`;
+    if (item.id) return `${item.category || "image"} #${item.id}`;
+    return "Untitled";
+  }
+
+  function createImageItem(el) {
+    const imageItem = document.createElement("div");
+    imageItem.classList.add("image-item");
+    imageItem.dataset.category = el.category || "image";
+
+    const loadingElement = document.createElement("div");
+    loadingElement.classList.add("image-loading");
+    loadingElement.textContent = "Loading...";
+    loadingElement.style.display = "flex";
+
+    const detailHref = `detail.html?id=${encodeURIComponent(el.id)}`;
+    const alink = document.createElement("a");
+    alink.href = detailHref;
+    alink.target = "_self";
+    alink.rel = "noopener noreferrer";
+
+    const img = new Image();
+    img.onload = function () {
+      loadingElement.style.display = "none";
+    };
+    img.onerror = function () {
+      img.src = "./asset/images/default.png";
+      loadingElement.style.display = "none";
+    };
+    img.alt = el.description;
+    img.title = el.description;
+    img.dataset.id = el.id;
+    img.dataset.author_id = el.author_id;
+    img.dataset.category = el.category;
+    img.dataset.size = el.size;
+    img.dataset.datetime = el.date_time;
+    img.src = `${el.src}@720w_80q.webp`;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    const footer = document.createElement("div");
+    footer.classList.add("card-footer");
+    const title = document.createElement("div");
+    title.classList.add("title");
+    title.textContent = displayTitle(el);
+    const pillAuthor = document.createElement("div");
+    pillAuthor.classList.add("pill");
+    pillAuthor.textContent = el.author_id ? `@${el.author_id}` : "unknown";
+    footer.appendChild(title);
+    footer.appendChild(pillAuthor);
+
+    alink.appendChild(img);
+    imageItem.appendChild(alink);
+    imageItem.appendChild(loadingElement);
+    imageItem.appendChild(footer);
+
+    imageItem.addEventListener("click", () => {
+      window.location.href = detailHref;
+    });
+
+    return imageItem;
+  }
+
+  function getRandomImages(count = 12) {
+    if (!imageData.length) return [];
+    const pool = imageData.slice();
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    return pool.slice(0, Math.min(count, pool.length));
+  }
+
   function showRandomImages() {
     const randomImages = getRandomImages();
-    const gallery = document.querySelector(".image-gallery");
-    while (gallery.firstChild) {
-      gallery.removeChild(gallery.firstChild);
-    }
+    const fragment = document.createDocumentFragment();
     randomImages.forEach((el) => {
-      //创建图片项容器
-      const imageItem = document.createElement("div");
-      imageItem.classList.add("image-item");
-      // 创建 loading 元素
-      const loadingElement = document.createElement("div");
-      loadingElement.classList.add("image-loading");
-      loadingElement.textContent = "Loading...";
-      loadingElement.style.display = "block";
-      //创建link
-      const alink = document.createElement("a");
-      alink.href = el.src;
-      alink.target = "_blank";
-      alink.rel = "noopener noreferrer nofollow";
-
-      // 创建图片元素
-      const img = new Image();
-      img.onload = function () {
-        // 隐藏 loading 元素
-        loadingElement.style.display = "none";
-      };
-      img.alt = el.description;
-      img.title = el.description;
-      img.dataset.id = el.id;
-      img.dataset.author_id = el.author_id;
-      img.dataset.category = el.category;
-      img.dataset.size = el.size;
-      img.dataset.datetime = el.date_time;
-      img.src = `${el.src}@480w_60q.webp`;
-      img.loading = "lazy";
-      img.decoding = "async";
-      //将图片添加到link
-      alink.appendChild(img);
-      //到图片项容器到图片项容器
-      imageItem.appendChild(alink);
-      // 将 loading 和图片元素添加到图片项容器
-      imageItem.appendChild(loadingElement);
-      //将图片项容器添加到图片显示区域
-      gallery.appendChild(imageItem);
+      fragment.appendChild(createImageItem(el));
     });
+    gallery.replaceChildren(fragment);
   }
 
-  // 刷新按钮点击事件
-  document
-    .getElementById("refreshButton")
-    .addEventListener("click", function () {
+  refreshButton.addEventListener("click", function () {
+    refreshButton.disabled = true;
+    refreshButton.textContent = "Refreshing...";
+    requestAnimationFrame(() => {
       showRandomImages();
+      setTimeout(() => {
+        refreshButton.disabled = false;
+        refreshButton.textContent = "Refresh";
+      }, 150);
     });
-
-  // 返回按钮点击事件
-  document.getElementById("backButton").addEventListener("click", function () {
-    window.location.href =
-      "https://wallpapers-collection.github.io/image-serenity"; // 返回主页面
   });
 
-  // 切换夜间模式和白天模式
-  const darkmode = document.querySelector(".darkmode-btn");
+  backButton.addEventListener("click", function () {
+    window.location.href = "https://wallpapers-collection.github.io/image-serenity";
+  });
+
   darkmode.addEventListener("click", function () {
     document.body.classList.toggle("night-mode");
     if (document.body.classList.contains("night-mode")) {
@@ -87,70 +131,66 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 
-  // 向上滚动按钮
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-  // 当用户滚动页面时，显示或隐藏返回顶部按钮
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 200) {
-      scrollTopBtn.classList.add("show");
-    } else {
-      scrollTopBtn.classList.remove("show");
-    }
-  });
+  let scrollTicking = false;
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        window.requestAnimationFrame(function () {
+          if (window.scrollY > 200) {
+            scrollTopBtn.classList.add("show");
+          } else {
+            scrollTopBtn.classList.remove("show");
+          }
+          scrollTicking = false;
+        });
+      }
+    },
+    { passive: true },
+  );
 
-  // 当用户点击返回顶部按钮时，滚动到页面顶部
   scrollTopBtn.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // 平滑滚动
+      behavior: "smooth",
     });
   });
 
-  // 加载语言
   await loadLanguage();
-  // 初始加载时显示随机图片
   showRandomImages();
 });
 
-/**
- * 加载所有图片
- * @returns 图片
- */
 async function loadPicture() {
   try {
-    const response = await fetch(`raw/datas.json`);
-    const datas = await response.json();
-    if (!datas) {
+    const response = await fetch("/raw/datas.json", {
+      cache: "force-cache",
+    });
+    let datas = await response.json();
+    if (!Array.isArray(datas)) {
       datas = [];
     }
-    //loading非表示
     document.querySelector(".loader-wrapper").style.display = "none";
     return datas;
   } catch (e) {
     console.log(e);
+    document.querySelector(".loader-wrapper").style.display = "none";
+    return [];
   }
 }
 
-/**
- * 加载语言
- */
 async function loadLanguage() {
-  // 获取用户的语言首选项
   let userLanguage = navigator.language || navigator.userLanguage;
-  if (
-    userLanguage !== "en" &&
-    userLanguage !== "zh-CN" &&
-    userLanguage !== "ja"
-  ) {
+  if (userLanguage !== "en" && userLanguage !== "zh-CN" && userLanguage !== "ja") {
     userLanguage = "en";
   }
-  let html = document.getElementsByTagName("html");
+  const html = document.getElementsByTagName("html");
   html[0].lang = userLanguage;
-  // 加载对应的 JSON 文件
   try {
-    const response = await fetch(`asset/lang/${userLanguage}.json`);
+    const response = await fetch(`asset/lang/${userLanguage}.json`, {
+      cache: "force-cache",
+    });
     const data = await response.json();
-    // 将文本内容应用到页面上
     document.getElementById("refreshButton").textContent = data.refresh;
     document.getElementById("backButton").textContent = data.back;
   } catch (e) {
