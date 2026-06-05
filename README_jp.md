@@ -26,10 +26,6 @@
 
   ![](pic/pagination.png)
 
-- ユーザーのブラウザ設定に基づいて、中国語、英語、日本語の言語を自動切り替えサポートします。
+- 新しいサイト
 
-  ![](pic/lang.png)
-
-- フィードバックについて
-
-  https://twitter.com/Seiriryu
+https://bili-anipix.github.io/

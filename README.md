@@ -26,10 +26,6 @@ The website currently offers the following features:
 
   ![](pic/pagination.png)
 
-- Supports automatic language switching between Chinese, English, and Japanese based on the user's browser settings.
+- New site for biliBili wallpaper collection
 
-  ![](pic/lang.png)
-
-- About and Feedback
-
-  https://twitter.com/Seiriryu
+https://bili-anipix.github.io/

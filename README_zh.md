@@ -26,10 +26,6 @@
 
   ![](pic/pagination.png)
 
-- 支持中文，英文，日文语言的切换（根据浏览器的设置自动设置）
+- 新的网站
 
-  ![](pic/lang.png)
-
-- 关于与反馈
-
-  https://twitter.com/Seiriryu
+https://bili-anipix.github.io/
