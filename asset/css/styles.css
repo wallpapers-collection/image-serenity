@@ -647,6 +647,8 @@ footer a:hover {
 }
 
 .detail-img-wrap {
+  position: relative;
+  min-height: 240px;
   background: #0b1726;
   border-radius: 18px;
   padding: 12px;
@@ -654,6 +656,10 @@ footer a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.detail-img-wrap .image-loading {
+  border-radius: 18px;
 }
 
 .detail-img-wrap img {

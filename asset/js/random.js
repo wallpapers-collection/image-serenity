@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!Array.isArray(imageData)) {
     imageData = [];
   }
+  // ids in datas.json are not unique per image (one post can hold several
+  // images), so tag each item with its stable array index for detail links
+  imageData = imageData.map((item, idx) => ({ ...item, _idx: idx }));
 
   function displayTitle(item) {
     const pick = (item.description || "")
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadingElement.textContent = "Loading...";
     loadingElement.style.display = "flex";
 
-    const detailHref = `detail.html?id=${encodeURIComponent(el.id)}`;
+    const detailHref = `detail.html?id=${encodeURIComponent(el.id)}&idx=${encodeURIComponent(el._idx)}`;
     const alink = document.createElement("a");
     alink.href = detailHref;
     alink.target = "_self";

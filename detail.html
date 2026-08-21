@@ -11,6 +11,10 @@
     <script src="asset/js/detail.js" defer></script>
   </head>
   <body class="detail-page">
+    <!-- init loading, same pattern as index/random pages -->
+    <div class="loader-wrapper" id="pageLoader">
+      <div class="loader"></div>
+    </div>
     <header class="header detail-header">
       <h1><a href="index.html">Image Serenity</a></h1>
       <p class="tagline">Full-size view & metadata</p>
@@ -18,6 +22,7 @@
     <main class="detail-main">
       <section class="detail-hero">
         <div class="detail-img-wrap">
+          <div class="image-loading" id="detailImgLoading">Loading...</div>
           <img id="detailImg" alt="detail" />
         </div>
         <div class="detail-meta">

@@ -1,36 +1,62 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const img = document.getElementById("detailImg");
+  const imgLoading = document.getElementById("detailImgLoading");
   const titleEl = document.getElementById("detailTitle");
   const descEl = document.getElementById("detailDesc");
   const chipsEl = document.getElementById("detailChips");
   const gridEl = document.getElementById("detailGrid");
   const openRaw = document.getElementById("detailOpenRaw");
+  const pageLoader = document.getElementById("pageLoader");
+
+  const hidePageLoader = () => {
+    if (pageLoader) pageLoader.style.display = "none";
+  };
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
+  const idx = params.get("idx");
 
-  if (!id) {
+  if (!id && idx === null) {
     titleEl.textContent = "No image id provided";
+    hidePageLoader();
     return;
   }
 
   try {
     const res = await fetch("raw/datas.json", { cache: "force-cache" });
     const datas = await res.json();
-    const item = Array.isArray(datas)
-      ? datas.find((x) => String(x.id) === String(id))
-      : null;
+    // ids in datas.json are not unique (one post can hold multiple images),
+    // so the array index (idx) is required to pinpoint the exact item.
+    let item = null;
+    if (Array.isArray(datas)) {
+      const parsedIdx = idx !== null ? Number(idx) : NaN;
+      if (Number.isInteger(parsedIdx) && datas[parsedIdx]) {
+        item = datas[parsedIdx];
+      } else {
+        // fallback for legacy links that only carry an id
+        item = datas.find((x) => String(x.id) === String(id));
+      }
+    }
 
     if (!item) {
       titleEl.textContent = "Image not found";
+      hidePageLoader();
       return;
     }
 
-    img.src = `${item.src}@1280w_85q.webp`;
     img.alt = item.description || item.title || "detail";
     titleEl.textContent = item.title || "Untitled";
     descEl.textContent = item.description || "";
     openRaw.href = item.src;
+
+    if (imgLoading) imgLoading.style.display = "flex";
+    img.onload = () => {
+      if (imgLoading) imgLoading.style.display = "none";
+    };
+    img.onerror = () => {
+      if (imgLoading) imgLoading.textContent = "Failed to load image";
+    };
+    img.src = `${item.src}@1280w_85q.webp`;
 
     chipsEl.innerHTML = "";
     const chips = [
@@ -68,5 +94,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (e) {
     titleEl.textContent = "Load failed";
     console.error(e);
+  } finally {
+    hidePageLoader();
   }
 });
+
