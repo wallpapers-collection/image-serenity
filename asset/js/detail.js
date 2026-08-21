@@ -7,10 +7,22 @@ document.addEventListener("DOMContentLoaded", async function () {
   const gridEl = document.getElementById("detailGrid");
   const openRaw = document.getElementById("detailOpenRaw");
   const pageLoader = document.getElementById("pageLoader");
+  const backBtn = document.getElementById("detailBackBtn");
 
   const hidePageLoader = () => {
     if (pageLoader) pageLoader.style.display = "none";
   };
+
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      // only go back if we arrived from within this site, otherwise fall back to home
+      if (document.referrer && new URL(document.referrer).origin === window.location.origin && window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+  }
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");

@@ -633,6 +633,32 @@ footer a:hover {
   margin-bottom: 10px;
 }
 
+.back-btn {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.night-mode .back-btn {
+  background: rgba(226, 232, 240, 0.1);
+  color: #e5ecf8;
+}
+
 .detail-main {
   max-width: 1200px;
   margin: 20px auto 40px;
@@ -641,14 +667,16 @@ footer a:hover {
 
 .detail-hero {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  /* minmax(0, ...) stops the fr tracks from growing to the image's intrinsic size */
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 18px;
   align-items: start;
 }
 
 .detail-img-wrap {
   position: relative;
-  min-height: 240px;
+  min-width: 0;
+  min-height: 320px;
   background: #0b1726;
   border-radius: 18px;
   padding: 12px;
