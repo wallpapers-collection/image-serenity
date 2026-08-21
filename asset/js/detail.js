@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   if (backBtn) {
     backBtn.addEventListener("click", () => {
-      // only go back if we arrived from within this site, otherwise fall back to home
-      if (document.referrer && new URL(document.referrer).origin === window.location.origin && window.history.length > 1) {
+      // site sends no-referrer, so history length is the only reliable signal we arrived from within the site
+      if (window.history.length > 1) {
         window.history.back();
       } else {
         window.location.href = "index.html";

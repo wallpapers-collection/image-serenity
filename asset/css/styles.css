@@ -438,6 +438,12 @@ footer a:hover {
     height: 52px;
     right: 14px;
   }
+  .back-btn {
+    width: 44px;
+    height: 44px;
+    left: 14px;
+    top: 14px;
+  }
 }
 
 .night-mode {
@@ -634,28 +640,34 @@ footer a:hover {
 }
 
 .back-btn {
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  display: inline-flex;
+  position: fixed;
+  left: 18px;
+  top: 18px;
+  z-index: 20;
+  width: 50px;
+  height: 50px;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(15, 23, 42, 0.06);
-  color: var(--text);
+  justify-content: center;
   border: none;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), #c6d8ff);
+  color: #0c131d;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
   cursor: pointer;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .back-btn:hover {
-  background: rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 34px rgba(0, 0, 0, 0.4);
 }
 
 .night-mode .back-btn {
-  background: rgba(226, 232, 240, 0.1);
+  background: linear-gradient(135deg, #1e293b, #0f172a);
   color: #e5ecf8;
 }
 
